@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap");
+body {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: #ecffeb;
+}
+
+html {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+input, button, textarea {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+i, em {
+  font-style: normal;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #26773B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+.navbar .navLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar .navLogo li a {
+  color: #F69220;
+  transition: color 0.3s;
+  font-size: 2rem;
+  font-weight: 700 bold;
+}
+.navbar .navLinks {
+  display: flex;
+  gap: 20px;
+}
+.navbar .navLinks li a {
+  color: #ecffeb;
+  transition: color 0.3s;
+}
+.navbar .navLinks li a:hover {
+  color: #F69220;
+}
+.navbar .navLogin {
+  display: flex;
+  gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 121px;
+    left: 0;
+    width: 100%;
+    padding: 4rem;
+    text-align: center;
+    opacity: 0.95;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+    z-index: 800;
+    border: 2px solid #26773B;
+    background-color: #49a948;
+  }
+  .navbar.active .navLinks {
+    display: flex;
+    transform: scaleY(1);
+  }
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .menuIcon .bar {
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background-color: #F69220;
+    transition: transform 0.3s;
+  }
+  .navbar.active .menuIcon {
+    transform: rotate(45deg);
+  }
+  .navbar.active .menuIcon .bar:nth-child(1) {
+    transform: translateY(7px) rotate(-180deg);
+  }
+  .navbar.active .menuIcon .bar:nth-child(2) {
+    transform: scale(0);
+  }
+  .navbar.active .menuIcon .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(90deg);
+  }
+}
+header {
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

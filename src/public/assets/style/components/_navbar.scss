@@ -1,0 +1,108 @@
+@import '../abstract/variables';
+
+.navbar {
+    width: 100%;
+    background-color:$primaryColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    position: fixed; //To define
+    top: 0;
+    z-index: 1000;
+
+    .navLogo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        li a {
+            color: $secondaryColor;
+            transition: color 0.3s;
+            font-size: 2rem;
+            font-weight: 700 bold;
+        }
+    }
+    .navLinks {
+        display: flex;
+        gap: 20px;
+
+        li a {
+            color: $tertiaryColor;
+            transition: color 0.3s;
+
+            &:hover{
+                color: $secondaryColor;
+            }
+        }
+    }
+
+    .navLogin {
+        display: flex;
+        gap: 10px;
+    }
+
+    .menuIcon {
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navLinks {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 121px;
+        left: 0;
+        width: 100%;
+        padding: 4rem;
+        text-align: center;
+        opacity: 0.95;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform .3s;
+        z-index: 800;
+        border: 2px solid $primaryColor;
+        background-color: $mobilePrimaryColor;
+    }
+
+    .navbar.active .navLinks {
+        display: flex;
+        transform: scaleY(1);
+    }
+
+    .menuIcon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        transition: transform .3s;
+        cursor: pointer;
+
+        .bar {
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            
+            background-color: $secondaryColor;
+            transition: transform 0.3s;
+        }
+    }
+
+    .navbar.active .menuIcon {
+        transform: rotate(45deg);
+    }
+    
+    .navbar.active .menuIcon .bar:nth-child(1) {
+        transform: translateY(7px) rotate(-180deg);
+    }
+    
+    .navbar.active .menuIcon .bar:nth-child(2) {
+        transform: scale(0);
+    }
+    
+    .navbar.active .menuIcon .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(90deg);
+    }
+}

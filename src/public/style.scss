@@ -1,0 +1,26 @@
+// Absract
+
+@import './assets/style/abstract/variables';
+@import './assets/style/abstract/mixins';
+
+//Base
+
+@import './assets/style/base/base';
+@import './assets/style/base/typography';
+@import './assets/style/base/reset';
+
+//components
+
+//@import './assets/style/components/';
+
+@import './assets/style/components/navbar';
+//Layout
+
+@import './assets/style/layout/footer';
+@import './assets/style/layout/header';
+
+
+//Page
+
+//@import './assets/style/page/';
+

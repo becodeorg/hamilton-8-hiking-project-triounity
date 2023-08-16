@@ -14,9 +14,18 @@ class Database
             "mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'),
             getenv('DB_USERNAME'),
             getenv('DB_PASSWORD')
-        );
 
+        );
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     }
+    public function query(string $request,array $params = []):PDOStatement{
+        $stmnt =  $this ->pdo->prepare($request);
+        $stmnt->execute($params);
+        return $stmnt;
+    }
+        public function lastInsertId(){
+            return $this->pdo->lastInsertId();
+        }
+
 }
