@@ -1,10 +1,10 @@
 {
-    "autoload": {
-      "classmap": [
-        "./"
-      ]
-    },
-    "require": {
-      "ext-pdo": "*"
-    }
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
+  },
+  "require": {
+    "ext-pdo": "*"
   }
+}
