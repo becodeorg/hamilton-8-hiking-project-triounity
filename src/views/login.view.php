@@ -1,4 +1,4 @@
-<form action="#" method="post">
+<form action="#" method="post" class="formAuth">
     <div>
         <label for="username">Username</label>
         <input type="text" id="username" name="username"/>

@@ -17,14 +17,12 @@ class Router
             case "/":
             case "/index":
             case "/home":
-                include_once 'views/layout/header.view.php';
-                include_once 'views/register.view.php';
-                include_once 'views/layout/footer.view.php';
+                
                 break;
                 case "/login":
                     $authController = new AuthController();
                     if ($method === "GET") $authController->showLoginForm();
-                    if ($method === "POST") $authController->login($_POST['username'], $_POST['password']);
+                    if ($method === "POST") $authController->login($_POST['nickname'], $_POST['password']);
                     echo($method);
                     break;
                 case "/logout":
@@ -34,7 +32,7 @@ class Router
                 case "/register":
                     $authController = new AuthController();
                     if ($method === "GET") $authController->showRegistrationForm();
-                    if ($method === "POST") $authController->register($_POST['username'],$_POST['email'], $_POST['password']);
+                    if ($method === "POST") $authController->register($_POST['firstname'], $_POST['lastname'], $_POST['nickname'], $_POST['email'], $_POST['password']);
                     break;
             default:
                 break;

@@ -71,7 +71,11 @@ i, em {
 .navbar .navLogin {
   display: flex;
   gap: 10px;
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
 }
+
 @media screen and (max-width: 768px) {
   .navLinks {
     display: none;
@@ -94,7 +98,7 @@ i, em {
     display: flex;
     transform: scaleY(1);
   }
-  .menuIcon {
+  .navbar.active .navLinks .menuIcon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -103,7 +107,7 @@ i, em {
     transition: transform 0.3s;
     cursor: pointer;
   }
-  .menuIcon .bar {
+  .navbar.active .navLinks .menuIcon .bar {
     width: 100%;
     height: 3px;
     border-radius: 10px;
@@ -123,6 +127,37 @@ i, em {
     transform: translateY(-9px) rotate(90deg);
   }
 }
+.containerAuth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(250, 244, 224);
+  transform: translate(-50%, -50%);
+  /* Animation to fade in the container */
+  animation: fadeInDown 1s ease-in-out;
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(-20px);
+  animation: fadeIn 1s ease-in-out 0.5s forwards;
+  /* Keyframes animation for fading in */
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+.containerAuth .formAuth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 header {
   width: 100%;
 }

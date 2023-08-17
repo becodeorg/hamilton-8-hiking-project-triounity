@@ -9,27 +9,30 @@ use models\Database;
 class AuthController extends Database
 {
 
-    public function register(string $usernameInput, string $emailInput, string $passwordInput)
+    public function register(string $firstnameInput, string $lastnameInput, string $nicknameInput, string $emailInput, string $passwordInput)
     {
-        if (empty($usernameInput) || empty($email) || empty($passwordInput)) {
+        if (empty($fistnameInput) || empty($nicknameInput) || empty($emailInput) || empty($passwordInput)) {
             throw new Exception('Formulaire non complet');
         }
 
-        $username = htmlspecialchars($usernameInput);
+        $firstname = htmlspecialchars($firstnameInput);
+        $lastname = htmlspecialchars($lastnameInput);
+        $nickname = htmlspecialchars($nicknameInput);
         $email = filter_var($emailInput, FILTER_SANITIZE_EMAIL);
         $passwordHash = password_hash($passwordInput, PASSWORD_DEFAULT);
+        
 
         Database::query(
             "
-                INSERT INTO users (username, email, password) 
+                INSERT INTO Users (firstname, lastname, nickname, email, password) 
                 VALUES (?, ?, ?)
             ",
-            [$username, $email, $passwordHash]
+            [$firstname, $lastname, $nickname, $email, $passwordHash]
         );
 
         $_SESSION['user'] = [
             'id' => Database::lastInsertId(),
-            'username' => $username,
+            'nickname' => $nickname,
             'email' => $email
         ];
 
@@ -44,17 +47,17 @@ class AuthController extends Database
         include 'views/layout/footer.view.php';
     }
 
-    public function login(string $usernameInput, string $passwordInput)
+    public function login(string $nicknameInput, string $passwordInput)
     {
         if (empty($usernameInput) || empty($passwordInput)) {
             throw new Exception('Formulaire non complet');
         }
 
-        $username = htmlspecialchars($usernameInput);
+        $nickname = htmlspecialchars($nicknameInput);
 
         $stmt = Database::query(
-            "SELECT * FROM users WHERE username = ?",
-            [$username]
+            "SELECT * FROM Users WHERE nickname = ?",
+            [$nickname]
         );
 
         $user = $stmt->fetch();
@@ -69,7 +72,7 @@ class AuthController extends Database
 
         $_SESSION['user'] = [
             'id' => $user['id'],
-            'username' => $username,
+            'nickname' => $nickname,
             'email' => $user['email']
         ];
 

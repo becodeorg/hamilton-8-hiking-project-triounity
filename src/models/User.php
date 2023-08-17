@@ -8,23 +8,23 @@ use PDO;
 
 class User extends Database
 {
-    public function create(string $username, string $email, string $password): bool
+    public function create(string $firstname, string $lastname, string $nickname, string $email, string $password): bool
     {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         Database::query(
-            "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-            [$username, $email, $passwordHash]
+            "INSERT INTO Users (firstname, lastname, nickname, email, password) VALUES (?, ?, ?)",
+            [$firstname ,$lastname ,$nickname, $email, $passwordHash]
         );
 
         return true;
     }
 
-    public function getByUsername(string $username): array|false
+    public function getByUsername(string $nickname): array|false
     {
         $stmt = $this->query(
-            "SELECT * FROM users WHERE username = ?",
-            [$username]
+            "SELECT * FROM Users WHERE nickname = ?",
+            [$nickname]
         );
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
