@@ -22,7 +22,7 @@
                 <li><a href="/">Hikes</a></li>
                 <li><a href="/">Contact</a></li>
             </ul>
-            <ul class="navLogin">
+            <ul class="navAuth">
                 <?php if (!empty($_SESSION['user'])): ?>
                     Bonjour <?= $_SESSION['user']['username'] ?>
                     <li><a href="/logout"><img src="/assets/img/loggout" /></a></li>

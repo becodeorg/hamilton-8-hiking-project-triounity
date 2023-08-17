@@ -68,7 +68,7 @@ i, em {
 .navbar .navLinks li a:hover {
   color: #F69220;
 }
-.navbar .navLogin {
+.navbar .navAuth {
   display: flex;
   gap: 10px;
   position: absolute;
@@ -160,6 +160,19 @@ i, em {
 
 header {
   width: 100%;
+}
+
+.pageContainer {
+  display: flex;
+  width: 200%;
+  transition: transform 0.3s;
+}
+.pageContainer .page {
+  width: 50%;
+  padding: 20px;
+}
+.pageContainer .pageRegister {
+  transform: translateX(100%);
 }
 
 /*# sourceMappingURL=style.css.map */
