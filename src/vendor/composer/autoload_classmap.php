@@ -16,4 +16,6 @@ return array(
     'controllers\\PageControllers' => $baseDir . '/controllers/PageControllers.php',
     'core\\Router' => $baseDir . '/core/Router.php',
     'models\\Database' => $baseDir . '/models/Database.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'core\\Router' => $baseDir . '/core/Router.php',
 );
