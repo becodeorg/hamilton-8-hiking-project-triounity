@@ -4,7 +4,7 @@ const navLinks = document.querySelector('.navLinks');
 
 /************ Menu Responsive ************/
 // Event listener for the "menu" button
-menuIcon.addEventListener('click', () => {
+/*menuIcon.addEventListener('click', () => {
   document.querySelector('.navbar').classList.toggle('active');
 });
 
@@ -23,5 +23,5 @@ document.addEventListener('DOMContentLoaded', function () {
       pageContainer.classList.toggle('show-register');
     });
   });
-});
+});*/
 
