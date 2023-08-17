@@ -9,6 +9,7 @@ class Router
         switch ($uri_path) {
             case "/":
             case "/index":
+            case "/tag":
             case "/home":
                 echo "It works!";
                 break;

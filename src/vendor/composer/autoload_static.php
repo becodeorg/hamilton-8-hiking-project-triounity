@@ -12,8 +12,10 @@ class ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c
         'Composer\\Autoload\\ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'app\\controllers\\hikecontroller' => __DIR__ . '/../..' . '/app/controllers/hikecontroller.php',
+        'app\\controllers\\tagcontroller' => __DIR__ . '/../..' . '/app/controllers/tagcontroller.php',
         'app\\models\\Database' => __DIR__ . '/../..' . '/app/models/database.php',
         'app\\models\\hike' => __DIR__ . '/../..' . '/app/models/hike.php',
+        'app\\models\\tag' => __DIR__ . '/../..' . '/app/models/tag.php',
         'core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
     );
 
