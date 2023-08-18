@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <link rel="stylesheet" href="style.css?v=n" type="text/css" />
     <script src="https://kit.fontawesome.com/9dacd2a25d.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
     <title>RandoMarre</title>
+    
 </head>
 <body>
     <header>
@@ -18,21 +23,23 @@
                     <a href="/">RandoMarre</a>
                 </li>
             </ul>
-            <ul class="navLinks">
+            <form class="searchBar">
+                <input type="search" placeholder="Search..." class="searchInput" required>
+                <button class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class="navLinks" id="navLinks">
                 <li><a href="/">Home</a></li>
                 <li><a href="/">Hikes</a></li>
                 <li><a href="/">Contact</a></li>
-            </ul>
-            <ul class="navAuth">
                 <?php if (!empty($_SESSION['user'])): ?>
-                    Bonjour <?= $_SESSION['user']['username'] ?>
+                    Welcome <?= $_SESSION['user']['username'] ?>
                     <li><a href="/logout"><img src="/assets/img/loggout" /></a></li>
                 <?php else: ?>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
-                <?php endif; ?>
+                <?php endif; ?> 
             </ul>
-            <div class="menuIcon">
+            <div class="menuIcon" id="menuIcon">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -40,3 +47,21 @@
         </nav>
     </header>
     <main>
+<?php
+  /**
+   * Empêcher la mise en cache des pages avec PHP
+   *
+   * La fonction doit-être appellée avant toute balise HTML,
+   * espace blanc, echo(), print()...
+   *
+   * @param : void
+   * @return : void
+   */
+  /*function empecherLaMiseEnCache()
+  {
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+    header('Cache-Control: no-cache, must-revalidate');
+  }*/
+?>

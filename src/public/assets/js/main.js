@@ -1,18 +1,24 @@
-// Selectors
-const menuIcon = document.querySelector('.menuIcon');
-const navLinks = document.querySelector('.navLinks');
+document.addEventListener('DOMContentLoaded', function() {
+  //Selectors
+  const menuIcon = document.querySelector('.menuIcon');
+  const navLinks = document.querySelector('.navLinks');
 
-/************ Menu Responsive ************/
-// Event listener for the "menu" button
-/*menuIcon.addEventListener('click', () => {
-  document.querySelector('.navbar').classList.toggle('active');
+  // Event listener for the "menu" button
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+
+  });
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
+
+// Selectors
+
+/*document.addEventListener('DOMContentLoaded', function () {
   // Selectors
   const toggleLinks = document.querySelectorAll('.toggle-page');
-  const pageContainer = document.querySelector('.page-container');
+  const pageContainer = document.querySelector('.pageContainer');
   // Loop through all toggle links
   toggleLinks.forEach(link => {
     // Add a "click" event listener to each link
