@@ -11,12 +11,12 @@ class ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Models\\Hiking' => __DIR__ . '/../..' . '/models/Index.php',
+        'Models\\Database' => __DIR__ . '/../..' . '/models/Database.php',
+        'Models\\User' => __DIR__ . '/../..' . '/models/User.php',
         'controllers\\AuthController' => __DIR__ . '/../..' . '/controllers/AuthController.php',
-        'controllers\\HikesControllers' => __DIR__ . '/../..' . '/controllers/HikesControllers.php',
+        'controllers\\HikeController' => __DIR__ . '/../..' . '/controllers/HikeController.php',
         'controllers\\PageControllers' => __DIR__ . '/../..' . '/controllers/PageControllers.php',
         'core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
-        'models\\Database' => __DIR__ . '/../..' . '/models/Database.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

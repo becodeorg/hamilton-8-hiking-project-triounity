@@ -1,4 +1,6 @@
 
+
+
 <body>
 <form method="post" action="#">
     <fieldset>
@@ -10,7 +12,7 @@
         <input type="time" name="duration" id="duration" required>
     </fieldset>
     <fieldset>
-        <label for="distance">Distane kilométrique de votre randonnée</label>
+        <label for="distance">Distance kilométrique de votre randonnée</label>
         <input type="number" step="0.1" min="0" name="distance" id="distance" required><p>km</p>
     </fieldset>
     <fieldset>

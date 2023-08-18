@@ -7,3 +7,7 @@ error_reporting(E_ALL);
 
 session_start();
 ?>
+
+
+<!--include par défaut dans notre site, des fichiers quo'n veut qu'ils soient chargé par défaut sur notre site-->
+

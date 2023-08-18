@@ -1,9 +1,18 @@
 <?php
-
+declare(strict_types=1);
 
 namespace controllers;
 
-class AuthController
+use Exception;
+use models\Database;
+
+class AuthController extends Database
 {
+    public function addAHike(): void
+    {
+        include 'src/views/form.view.php';
+
+
+    }
 
 }

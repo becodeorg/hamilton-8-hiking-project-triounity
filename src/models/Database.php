@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+
 
 namespace Models;
 
@@ -10,7 +10,9 @@ class Database
 {
     private PDO $pdo;
 
-    public function __construct()
+    public function __construct() // le construct est le constructor de notre db, ils sont liés
+        //c une fct qui est générée dès qu'on va  initialiser notre objet db et ca va permettre d'init notre $PDO,
+        //de créer dans notre propriété PDO de notre classe une connexsion a notre db grace a pdo.
     {
         $this->pdo = new PDO(
             'mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_DATABASE'),
@@ -21,12 +23,19 @@ class Database
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
+// les fct query permettent de faire des requetes select qu'on va faire,
+//faut mettre un sql de type string a l'int et un array $apram, param de la requete sql
 
-    public function query(string $query, array $params = []): PDOStatement
+/**
+ * @param array $param tableau des param
+ * @param string $sql  requête sql
+ * @return PDOStatement
+ */
+    public function query(string $sql, array $param = []): PDOStatement
     {
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute($params);
-
+        // prepare la requête
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($param);
         return $stmt;
     }
 
@@ -35,3 +44,5 @@ class Database
         return $this->pdo->lastInsertId();
     }
 }
+
+// extend db et new db c la même chose
