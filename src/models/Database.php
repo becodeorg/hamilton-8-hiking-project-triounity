@@ -20,7 +20,10 @@ class Database
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     }
     public function query(string $request,array $params = []):PDOStatement{
+
         $stmnt =  $this ->pdo->prepare($request);
+
+        
         $stmnt->execute($params);
         return $stmnt;
     }

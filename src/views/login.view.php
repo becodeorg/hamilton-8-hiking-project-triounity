@@ -15,12 +15,12 @@
             <p>Or use your email</p>
             <form action="#" method="post" class="formAuth">
                 <div>
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username"/>
+                    <label for="nickname">Nickname</label>
+                    <input type="text" id="nickname" name="nickname" placeholder="Your nickname"/>
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password"/>
+                    <input type="password" id="password" name="password" placeholder="Your password"/>
                 </div>
                 <button type="submit">Sign in</button>
             </form>

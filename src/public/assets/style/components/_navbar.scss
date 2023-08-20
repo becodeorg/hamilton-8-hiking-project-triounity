@@ -6,7 +6,7 @@
     align-items: center;
     background-color: $greenPrimaryColor;
     padding: 20px;
-    color: white;
+    color: $whiteTertiaryColor;
 
     .navLogo {
 
@@ -15,7 +15,7 @@
         }
 
         a {
-            color: white;
+            color: $whiteTertiaryColor;
             text-decoration: none;
             font-size: 20px;
             margin-left: 10px;
@@ -65,11 +65,11 @@
             transition: 0.4s ease;
     
             &:hover {
-                background: #fff;
+                background: $whiteTertiaryColor;
             }
     
             + .searchInput:focus & {
-                background: #fff;
+                background: $whiteTertiaryColor;
             }
         }
     
@@ -94,12 +94,12 @@
             margin-right: 20px;
 
             a {
-                color: white;
+                color: $whiteTertiaryColor;
                 text-decoration: none;
                 transition: color 0.3s, transform 0.3s;
 
                 &:hover {
-                    color: #ffc107;
+                    color: $orangeSecondaryColor;
                     transform: translateY(-3px);
                 }
             }
@@ -119,7 +119,7 @@
             width: 100%;
             height: 4px;
             border-radius: 200px;
-            background-color: white;
+            background-color: $whiteTertiaryColor;
             margin: 3px 0;
             transition: transform 0.4s;
         }
@@ -142,7 +142,7 @@
     @media screen and (max-width: 768px) {
         .navLinks {
             display: none;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;

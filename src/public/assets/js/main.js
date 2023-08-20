@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+/*
+// Obtenir la liste des tags
+const tagList = document.querySelector('.tagList');
+
+// Dupliquer les tags pour créer un effet de défilement en cercle
+const clonedTags = tagList.innerHTML;
+tagList.innerHTML += clonedTags;*/
 
 
 // Selectors

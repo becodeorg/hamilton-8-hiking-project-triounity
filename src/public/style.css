@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 body {
   width: 100vw;
   min-height: 100vh;
@@ -8,7 +7,7 @@ body {
   background-color: rgb(250, 244, 224);
 }
 
-html {
+html, * {
   font-family: "Caveat Brush", cursive;
 }
 
@@ -42,13 +41,13 @@ i, em {
   align-items: center;
   background-color: #4CAF50;
   padding: 20px;
-  color: white;
+  color: #FFFFFF;
 }
 .navbar .navLogo img {
   vertical-align: middle;
 }
 .navbar .navLogo a {
-  color: white;
+  color: #FFFFFF;
   text-decoration: none;
   font-size: 20px;
   margin-left: 10px;
@@ -93,10 +92,10 @@ i, em {
   transition: 0.4s ease;
 }
 .navbar .searchBar .searchBtn:hover {
-  background: #fff;
+  background: #FFFFFF;
 }
 + .searchInput:focus .navbar .searchBar .searchBtn {
-  background: #fff;
+  background: #FFFFFF;
 }
 .navbar .searchBar:hover .searchInput {
   width: 240px;
@@ -114,7 +113,7 @@ i, em {
   margin-right: 20px;
 }
 .navbar .navLinks li a {
-  color: white;
+  color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s, transform 0.3s;
 }
@@ -135,7 +134,7 @@ i, em {
   width: 100%;
   height: 4px;
   border-radius: 200px;
-  background-color: white;
+  background-color: #FFFFFF;
   margin: 3px 0;
   transition: transform 0.4s;
 }
@@ -151,7 +150,7 @@ i, em {
 @media screen and (max-width: 768px) {
   .navbar .navLinks {
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -178,25 +177,29 @@ i, em {
 }
 
 .pageContainer {
-  font-family: "Quicksand", sans-serif;
+  margin: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f7f9fc;
 }
-
-.containerAuth {
+@media screen and (max-width: 768px) {
+  .pageContainer {
+    margin: 0 5%;
+  }
+}
+.pageContainer .containerAuth {
+  width: 100%;
   display: flex;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   animation: slide-in 1s ease-in-out;
 }
 @keyframes slide-in {
   from {
-    transform: translateY(100px);
+    transform: translateY(6.25rem);
     opacity: 0;
   }
   to {
@@ -204,12 +207,18 @@ i, em {
     opacity: 1;
   }
 }
-.containerAuth .authLeft {
+@media screen and (max-width: 768px) {
+  .pageContainer .containerAuth {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+.pageContainer .containerAuth .authLeft {
   flex: 1;
-  padding: 40px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-color: #4CAF50;
@@ -224,89 +233,363 @@ i, em {
     opacity: 1;
   }
 }
-.containerAuth .authLeft h2 {
-  font-size: 32px;
+.pageContainer .containerAuth .authLeft h2 {
+  font-size: 2rem;
   text-align: center;
 }
-.containerAuth .authLeft p {
-  font-size: 20px;
+.pageContainer .containerAuth .authLeft p {
+  font-size: 1.25rem;
   text-align: center;
 }
-.containerAuth .authLeft .toggle-page {
+.pageContainer .containerAuth .authLeft .toggle-page {
+  width: 100%;
+  padding: 1rem;
   background-color: rgb(250, 244, 224);
   color: #4CAF50;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.containerAuth .authLeft .toggle-page:hover {
-  color: rgba(255, 255, 255, 0.7);
-}
-.containerAuth .authRight {
-  flex: 1;
-  padding: 40px;
-}
-.containerAuth .authRight h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-.containerAuth .authRight p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-.containerAuth .authRight .linksAuth {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.containerAuth .authRight .linksAuth .btnLinks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  transition: background-color 0.3s;
-}
-.containerAuth .authRight .linksAuth .btnLinks:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.containerAuth .authRight .formAuth label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-.containerAuth .authRight .formAuth input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-.containerAuth .authRight .formAuth input:focus {
-  background-color: #f3f7f9;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-}
-.containerAuth .authRight .formAuth button {
-  width: 100%;
-  padding: 12px;
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
+  border-radius: 2rem;
+  font-size: 1.125rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.containerAuth .authRight .formAuth button:hover {
+.pageContainer .containerAuth .authLeft .toggle-page:hover {
   background-color: #357a38;
+}
+@media screen and (max-width: 768px) {
+  .pageContainer .containerAuth .authLeft {
+    gap: 1rem;
+  }
+}
+.pageContainer .containerAuth .authRight {
+  width: 100%;
+  flex: 1;
+  padding: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #FFFFFF;
+}
+.pageContainer .containerAuth .authRight h2 {
+  font-size: 2rem;
+}
+.pageContainer .containerAuth .authRight p {
+  font-size: 1rem;
+  color: #c6c4c4;
+  margin-bottom: 1.25rem;
+}
+.pageContainer .containerAuth .authRight .linksAuth {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
+}
+.pageContainer .containerAuth .authRight .linksAuth .btnLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 200px;
+  color: #000000;
+  transition: background-color 0.3s;
+  border: 1px solid rgb(229, 237, 202);
+}
+.pageContainer .containerAuth .authRight .linksAuth .btnLinks:hover {
+  background-color: rgba(94, 233, 0, 0.272);
+}
+.pageContainer .containerAuth .authRight .formAuth label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.pageContainer .containerAuth .authRight .formAuth input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #dffbde;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.pageContainer .containerAuth .authRight .formAuth input:focus {
+  background-color: rgb(250, 244, 224);
+  box-shadow: 0 0 0 0.1875rem rgba(76, 175, 79, 0.666);
+}
+.pageContainer .containerAuth .authRight .formAuth input::placeholder {
+  color: #e3e1e1;
+}
+.pageContainer .containerAuth .authRight .formAuth button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #4CAF50;
+  color: rgb(250, 244, 224);
+  border: none;
+  border-radius: 2.5rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.pageContainer .containerAuth .authRight .formAuth button:hover {
+  background-color: #357a38;
+}
+
+.tagBubbles {
+  margin: 2rem;
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tagBubbles .tagList {
+  list-style: none;
+  padding: auto;
+  margin: 0;
+  text-align: center;
+}
+.tagBubbles .tagList li {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease;
+}
+.tagBubbles .tagList li:hover {
+  background-color: #357a38;
+}
+.tagBubbles .tagList li a {
+  text-decoration: none;
+  color: inherit;
+}
+.tagBubbles .tagList li a:hover {
+  color: #F69220;
+}
+
+.hikesList {
+  margin: 2rem;
+  padding: 1rem;
+  background-color: #49A948;
+  border: 1px solid #CCCCCC;
+  border-radius: 1rem;
+}
+.hikesList h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+.hikesList .cardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.hikesList .cardList .hikeCard {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 200px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hikesList .cardList .hikeCard .cardInner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center center;
+}
+.hikesList .cardList .hikeCard .cardInner .cardFront, .hikesList .cardList .hikeCard .cardInner .cardBack {
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+.hikesList .cardList .hikeCard .cardInner .cardFront h3 {
+  color: #F69220;
+}
+.hikesList .cardList .hikeCard .cardInner .cardBack {
+  transform: rotateY(180deg);
+}
+.hikesList .cardList .hikeCard .cardInner .cardBack a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.hikesList .cardList .hikeCard .cardInner .cardBack a:hover {
+  background-color: #F69220;
+  color: #FFFFFF;
+  transform: scale(1.1);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.hikesList .cardList .hikeCard:hover .cardInner {
+  transform: rotateY(180deg);
+}
+.hikesList .cardList .hikeCard:hover .cardFront {
+  opacity: 0;
+}
+
+.footer {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-size: 1rem;
+  position: relative;
+  bottom: 0;
+}
+.footer figure.footer-logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.footer .navigation h3, .footer .newsletter h3, .footer .address h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.footer .navigation ul, .footer .newsletter ul, .footer .address ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .navigation ul li, .footer .newsletter ul li, .footer .address ul li {
+  margin-bottom: 0.5rem;
+}
+.footer .navigation ul a, .footer .newsletter ul a, .footer .address ul a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s;
+  text-align: center;
+}
+.footer .navigation ul a:hover, .footer .newsletter ul a:hover, .footer .address ul a:hover {
+  color: #F69220;
+}
+.footer .navigation form input[type=email], .footer .newsletter form input[type=email], .footer .address form input[type=email] {
+  width: 100%;
+  padding: 0.625rem;
+  margin-bottom: 1rem;
+  border: 1px solid #DDDDDD;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+}
+.footer .navigation form input[type=email]:focus, .footer .newsletter form input[type=email]:focus, .footer .address form input[type=email]:focus {
+  background-color: rgb(250, 244, 224);
+}
+.footer .navigation form button[type=submit], .footer .newsletter form button[type=submit], .footer .address form button[type=submit] {
+  background-color: #F69220;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.footer .navigation form button[type=submit]:hover, .footer .newsletter form button[type=submit]:hover, .footer .address form button[type=submit]:hover {
+  background-color: #b36b00;
+}
+.footer .navigation p, .footer .newsletter p, .footer .address p {
+  margin-bottom: 0.5rem;
+}
+.footer .social-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer .social-icons li {
+  transition: background-color 0.3s;
+}
+.footer .social-icons li a {
+  font-size: 1.25rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #CCCCCC;
+  border-radius: 200px;
+  background-color: #dffbde;
+  color: #000000;
+  transition: color, background-color 0.3s;
+  transition: transform 0.5s;
+}
+.footer .social-icons li a:hover {
+  color: #F69220;
+  background-color: rgba(94, 233, 0, 0.272);
+  transform: scale(1.5);
+}
+.footer .copyright {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  background-color: #26773B;
+}
+@media (max-width: 1024px) {
+  .footer .navigation, .footer .newsletter, .footer .address {
+    width: calc(50% - 1.5rem);
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .navigation, .footer .newsletter, .footer .address {
+    width: 100%;
+    padding: 0 5rem;
+    text-align: center;
+  }
+}
+@media (max-width: 576px) {
+  .footer .navigation, .footer .newsletter, .footer .address {
+    width: 100%;
+  }
 }
 
 header {
   width: 100%;
 }
+
+/*animation: fadeInUp 1s ease-in-out forwards
+    @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+    }*/
 
 /*# sourceMappingURL=style.css.map */

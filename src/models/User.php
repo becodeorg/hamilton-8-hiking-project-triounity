@@ -1,7 +1,7 @@
 <?php
-declare(strict_types=1);
 
-namespace Models;
+
+namespace models;
 
 use models\Database;
 use PDO;
@@ -13,7 +13,7 @@ class User extends Database
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         Database::query(
-            "INSERT INTO Users (firstname, lastname, nickname, email, password) VALUES (?, ?, ?)",
+            "INSERT INTO Users (firstname, lastname, nickname, email, password) VALUES (?, ?, ?, ?, ?)",
             [$firstname ,$lastname ,$nickname, $email, $passwordHash]
         );
 

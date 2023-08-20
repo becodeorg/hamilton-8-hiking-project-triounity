@@ -11,10 +11,16 @@ class ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Models\\User' => __DIR__ . '/../..' . '/models/User.php',
         'controllers\\AuthController' => __DIR__ . '/../..' . '/controllers/AuthController.php',
+        'controllers\\HikeController' => __DIR__ . '/../..' . '/controllers/HikeController.php',
+        'controllers\\PageController' => __DIR__ . '/../..' . '/controllers/PageController.php',
+        'controllers\\TagController' => __DIR__ . '/../..' . '/controllers/TagController.php',
+        'core\\Error' => __DIR__ . '/../..' . '/core/Error.php',
         'core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'models\\Database' => __DIR__ . '/../..' . '/models/Database.php',
+        'models\\Hike' => __DIR__ . '/../..' . '/models/Hike.php',
+        'models\\Tag' => __DIR__ . '/../..' . '/models/Tag.php',
+        'models\\User' => __DIR__ . '/../..' . '/models/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

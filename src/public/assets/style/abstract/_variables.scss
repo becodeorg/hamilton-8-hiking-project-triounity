@@ -1,20 +1,30 @@
-//Main color
+
 
 $greenPrimaryColor : #4CAF50;
 $greenSecondaryColor: #26773B;
 $greenTeriaryColor: #49A948;
 
-$OrangePrimaryColor:#F69220;
+
+
+$borderPrimaryColor : #CCCCCC;
+$borderSecondaryColor : #DDDDDD;
+
+
+
+$orangePrimaryColor : #F69220;
+$orangeSecondaryColor : #ffc107;
+$orangeTertiaryColor : #ff9900;
+
 
 
 $whitePrimaryColor: rgb(250, 244, 224);
-$whiteSecondaryColor : #ecffeb;
+$whiteSecondaryColor : #dffbde;
 $whiteTertiaryColor: #FFFFFF;
 
 
 
-$darkBtnColor : #000000;
+$blackPrimaryColor: #000000;
 
-//Responsive Color
-
+$hoverDarkColorOne : darken($greenPrimaryColor, 15%);
+$hoverDarkColorTwo : darken($orangeTertiaryColor, 15%);
 

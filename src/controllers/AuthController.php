@@ -1,18 +1,20 @@
 <?php
-declare(strict_types=1);
+
 
 namespace controllers;
 
-use Exception;
+
+//use Exception;
 use models\Database;
+use core\Error;
 
 class AuthController extends Database
 {
 
     public function register(string $firstnameInput, string $lastnameInput, string $nicknameInput, string $emailInput, string $passwordInput)
     {
-        if (empty($fistnameInput) || empty($nicknameInput) || empty($emailInput) || empty($passwordInput)) {
-            throw new Exception('Formulaire non complet');
+        if (empty($firstnameInput) || empty($lastnameInput) || empty($nicknameInput) || empty($emailInput) || empty($passwordInput)) {
+            //throw new Exception('Formulaire non complet');
         }
 
         $firstname = htmlspecialchars($firstnameInput);
@@ -25,12 +27,12 @@ class AuthController extends Database
         Database::query(
             "
                 INSERT INTO Users (firstname, lastname, nickname, email, password) 
-                VALUES (?, ?, ?)
+                VALUES (?, ?, ?, ?, ?)
             ",
             [$firstname, $lastname, $nickname, $email, $passwordHash]
         );
 
-        $_SESSION['user'] = [
+        $_SESSION['Users'] = [
             'id' => Database::lastInsertId(),
             'nickname' => $nickname,
             'email' => $email
@@ -50,7 +52,8 @@ class AuthController extends Database
     public function login(string $nicknameInput, string $passwordInput)
     {
         if (empty($usernameInput) || empty($passwordInput)) {
-            throw new Exception('Formulaire non complet');
+            //throw new Exception('Formulaire non complet');
+            Error::showError('Formulaire non complet');
         }
 
         $nickname = htmlspecialchars($nicknameInput);
@@ -63,11 +66,13 @@ class AuthController extends Database
         $user = $stmt->fetch();
 
         if (empty($user)) {
-            throw new Exception('Mauvais nom d\'utilisateur');
+            //throw new Exception('Mauvais nom d\'utilisateur');
+            Error::showError('Mauvais mot nom d\'utilisateur');
         }
 
         if (password_verify($passwordInput, $user['password']) === false) {
-            throw new Exception('Mauvais mot de passe');
+            //throw new Exception('Mauvais mot de passe');
+            Error::showError('Mauvais mot de passe');
         }
 
         $_SESSION['user'] = [
@@ -90,7 +95,7 @@ class AuthController extends Database
 
     public function logout()
     {
-        unset($_SESSION['user']);
+        unset($_SESSION['Users']);
         http_response_code(302);
         header('location: /');
     }
