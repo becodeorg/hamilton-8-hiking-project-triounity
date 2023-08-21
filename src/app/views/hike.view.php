@@ -2,4 +2,7 @@
 
 <p> <?= $hike['description'] ?></p>
 
-<h4>Price: $<?= $hike['duraton'] ?></h4>
+<p>durée <?= $hike['duration'] ?></p>
+<p>distance <?= $hike['distance'] ?></p>
+<p>dénivelé positif <?= $hike['elevation_gain'] ?></p>
+<p>créer par <?= $hike['creator'] ?></p>
