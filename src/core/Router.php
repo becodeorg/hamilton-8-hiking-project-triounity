@@ -2,13 +2,8 @@
 
 namespace core;
 
-use Exception;
-
 class Router
 {
-    /**
-     * @throws Exception
-     */
     public function route(string $uri_path): void
     {
         switch ($uri_path) {
