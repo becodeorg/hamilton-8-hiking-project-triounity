@@ -1,4 +1,4 @@
-<section class="pageContainer">
+<section class="pageContainerLogin">
     <article class="containerAuth">
         <div class="authLeft">
             <h2>Hello, Friend!</h2>

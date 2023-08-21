@@ -1,4 +1,4 @@
-<section class="pageContainer">
+<section class="pageContainerRegister">
     <article class="containerAuth">
         <div class="authLeft">
             <h2>Welcome Back!</h2>
