@@ -9,7 +9,6 @@ use PDOStatement;
 class Database
 {
     private PDO $pdo;
-
     public function __construct()
     {
         $this->pdo = new PDO(

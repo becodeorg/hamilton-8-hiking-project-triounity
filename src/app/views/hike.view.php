@@ -1,8 +1,6 @@
-<h2> <?= $hike['name'] ?> </h2>
-
-<p> <?= $hike['description'] ?></p>
-
-<p>duration <?= $hike['duration'] ?></p>
-<p>distance <?= $hike['distance'] ?></p>
-<p>elevation gain <?= $hike['elevation_gain'] ?></p>
-<p>created by <?= $hike['creator'] ?></p>
+<section class="details-container">
+        <h2><?= $hike['name'] ?></h2>
+        <p><?= $hike['description'] ?></p>
+        <p><i class="fa-solid fa-timer fa-x2"></i>Time : <?= $hike['duration'] ?></p>
+        <a href="#" class="button">Réserver</a>
+</section>
