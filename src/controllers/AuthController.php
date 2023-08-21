@@ -2,188 +2,259 @@
 
 
 namespace controllers;
-
-
 use models\Database;
-//use core\Error;
-use Exception;
 use models\User;
-use PHPMailer\PHPMailer\PHPMailer;
-
-//use PHPMailer\PHPMailer\SMTP;
 
 class AuthController extends Database
 {
-
+    /**
+     * Méthode pour enregistrer un nouvel utilisateur
+     * @param string $firstnameInput Prénom de l'utilisateur
+     * @param string $lastnameInput Nom de l'utilisateur
+     * @param string $nicknameInput Surnom de l'utilisateur
+     * @param string $emailInput Adresse e-mail de l'utilisateur
+     * @param string $passwordInput Mot de passe de l'utilisateur
+     */
     public function register(string $firstnameInput, string $lastnameInput, string $nicknameInput, string $emailInput, string $passwordInput)
     {
-        if (empty($firstnameInput) || empty($lastnameInput) || empty($nicknameInput) || empty($emailInput) || empty($passwordInput)) {
-            throw new Exception('Formulaire non complet');
-        }
-
-        $firstname = htmlspecialchars($firstnameInput);
-        $lastname = htmlspecialchars($lastnameInput);
-        $nickname = htmlspecialchars($nicknameInput);
-        $email = filter_var($emailInput, FILTER_SANITIZE_EMAIL);
-        $passwordHash = password_hash($passwordInput, PASSWORD_DEFAULT);
-        
-
-        Database::query(
-            "
-                INSERT INTO Users (firstname, lastname, nickname, email, password) 
-                VALUES (?, ?, ?, ?, ?)
-            ",
-            [$firstname, $lastname, $nickname, $email, $passwordHash]
-        );
-
-        $_SESSION['Users'] = [
-            'id' => Database::lastInsertId(),
-            'nickname' => $nickname,
-            'email' => $email
-        ];
-
-        // Envoi de l'e-mail de confirmation
         try {
-            // Créer et configurer l'objet PHPMailer
-            $mail = new PHPMailer(true);
-            //$mail->setDebugOutput('html'); // Pour afficher le journal dans le HTML de la page
-            //$mail->Debugoutput = 'log.txt'; // Pour enregistrer le journal dans un fichier log.txt
-            $mail->CharSet = 'UTF-8'; // Choix de l'encodage
-            $mail->SetLanguage('fr'); // Langue des erreurs
+            // Validation des entrées utilisateur
+            if (empty($firstnameInput) || empty($lastnameInput) || empty($nicknameInput) || empty($emailInput) || empty($passwordInput)) {
+            throw new FormValidationException('Formulaire non complet');
+            }
 
-            $mail ->SMTPDebug = 0;
-            $mail->isSMTP();
+            // Nettoyage et traitement des entrées
+            $firstname = htmlspecialchars($firstnameInput);
+            $lastname = htmlspecialchars($lastnameInput);
+            $nickname = htmlspecialchars($nicknameInput);
+            $email = filter_var($emailInput, FILTER_SANITIZE_EMAIL);
+            $passwordHash = password_hash($passwordInput, PASSWORD_DEFAULT);
 
-            $mail->Host = getenv('EMAIL_HOST'); // Adresse du serveur SMTP
-            $mail->SMTPAuth = true; // Activer l'authentification SMTP
+            // Enregistrement de l'utilisateur dans la base de donées
+            Database::query(
+            "INSERT INTO Users (firstname, lastname, nickname, email, password) VALUES (?, ?, ?, ?, ?)",
+            [$firstname, $lastname, $nickname, $email, $passwordHash]
+            );
 
-            $mail->Username = getenv('EMAIL_USERNAME'); // Votre nom d'utilisateur SMTP
-            $mail->Password = getenv('EMAIL_PASSWORD'); // Votre mot de passe SMTP
-            //$mail->setCertainty('/cacert.pem');
-            $mail->SMTPSecure = 'ssl'; // Utiliser TLS pour la sécurité ou 'tls'
-            $mail->Port = 465; // Port SMTP ou 587 pour 'tls'
+            // Envoie de l'e-mail de confirmation
+            EmailService::sendConfirmationEmail($email, $nickname);
 
-            $mail->setFrom(getenv('EMAIL_USERNAME'), 'randomarre'); // Adresse et nom de l'émetteur
-            $mail->addAddress($email, $nickname); // Adresse et nom du destinataire
+            // Enregistrement de l'utilisateur dans la session
+            $_SESSION['Users']=[
+                'id' => Database::lastInsertId(),
+                'nickname' => $nickname,
+                'email' => $email
+            ];
 
-            $emailContent = file_get_contents('../email/confirmation_email.html');
-            $mail->isHTML(true);
-            $mail->Subject = 'Confirmation Email'; // Sujet de l'e-mail
-            $mail->Body = $emailContent; // Corps de l'e-mail 
-            $mail->AltBody = 'This is the plain text version of the email.'; // Version texte brut de l'e-mail
-            
-            // Envoyer l'e-mail
-            $mail->send();
-            
-            // Rediriger l'utilisateur vers une page de succès
-            // ou afficher un message de succès
-            // ...
+            // Redirection réussie
             http_response_code(302);
-            header('location: /');
-    
-        } catch (Exception $e) {
-            // Gérer les erreurs d'envoi d'e-mail
-            error_log("Erreur d'envoi d'e-mail : " . $e->getMessage());
-        }
+            header('Location: /');
+            exit;
 
-        // Rediriger l'utilisateur vers une page de succès ou
-        // afficher un message de succès pour l'inscription
+        } catch (FormValidationException $e) {
+            ErrorHandler::handleError($e, "Erreur de validation de formulaire : " . $e->getMessage());
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Exception inattendue : " . $e->getMessage());
+        } 
     }
 
+    /**
+     * Méthode pour afficher le formulaire d'inscription
+     */
     public function showRegistrationForm()
     {
-        include 'views/layout/header.view.php';
-        include 'views/register.view.php';
-        include 'views/layout/footer.view.php';
+        try {
+            // Inclusion des vues nécessaires pour le formulaire d'inscription
+            include 'views/layout/header.view.php';
+            include 'views/register.view.php';
+            include 'views/layout/footer.view.php';
+
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire d'inscription");
+        }
     }
 
+    /**
+     * Méthode pour connecter un utilisateur
+     * @param string $nicknameInput Surnom de l'utilisateur
+     * @param string $passwordInput Mot de passe de l'utilisateur
+     */
     public function login(string $nicknameInput, string $passwordInput)
     {
-        if (empty($nicknameInput) || empty($passwordInput)) {
-            throw new Exception('Formulaire non complet');
-            //Error::showError('Formulaire non complet');
+        try {
+            // Validation des entrées utilisateur
+            if (empty($nicknameInput) || empty($passwordInput)) {
+                throw new FormValidationException('Formulaire incomplet');
+            }
+
+            $nickname = htmlspecialchars($nicknameInput);
+
+            // Récupération de l'utilisateur depuis la base de données
+            $stmt = Database::query(
+                "SELECT * FROM Users WHERE nickname = ?",
+                [$nickname]
+            );
+
+            $user = $stmt->fetch();
+
+            // Vérification de l'existence de l'utilisateur
+            if (empty($user)) {
+                throw new AuthException("Mauvais nom d'utilisateur");
+            }
+
+            // Vérification du mot de passe
+            if (password_verify($passwordInput, $user['password']) === false) {
+                throw new AuthException("Mauvais mot de passe");
+            }
+
+            // Enregistrement de l'utilisateur dans la session
+            $_SESSION['Users'] = [
+                'id' => $user['id'],
+                'nickname' => $nickname,
+                'email' => $user['email']
+            ];
+
+            // Redirection réussie
+            http_response_code(302);
+            header('Location: /');
+            exit;
+
+        } catch (FormValidationException $e) {
+            ErrorHandler::handleError($e, "Erreur de validation du formulaire : " . $e->getMessage());
+        } catch (AuthException $e) {
+            ErrorHandler::handleError($e, "Erreur d'authentification : " . $e->getMessage());
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Exception inattendue : " . $e->getMessage());
         }
-
-        $nickname = htmlspecialchars($nicknameInput);
-
-        $stmt = Database::query(
-            "SELECT * FROM Users WHERE nickname = ?",
-            [$nickname]
-        );
-
-        $user = $stmt->fetch();
-
-        if (empty($user)) {
-            throw new Exception('Mauvais nom d\'utilisateur');
-            //Error::showError('Mauvais mot nom d\'utilisateur');
-        }
-
-        if (password_verify($passwordInput, $user['password']) === false) {
-            throw new Exception('Mauvais mot de passe');
-            //Error::showError('Mauvais mot de passe');
-        }
-
-        $_SESSION['Users'] = [
-            'id' => $user['id'],
-            'nickname' => $nickname,
-            'email' => $user['email']
-        ];
-
-        // Redirect to home page
-        http_response_code(302);
-        header('location: /');
     }
 
+    /**
+     * Méthode pour afficher le formulaire de connexion
+     */
     public function showLoginForm()
     {
-        include 'views/layout/header.view.php';
-        include 'views/login.view.php';
-        include 'views/layout/footer.view.php';
-    }
-
-    public function logout()
-    {
-        unset($_SESSION['Users']);
-        http_response_code(302);
-        header('location: /');
-    }
-
-    public function showUpdateProfileForm()
-    {
-        $userModel = new User();
-        //echo $_SESSION['Users']['nickname'];
-        $userData = $userModel->getByUsername($_SESSION['Users']['nickname']);
-        var_dump($userData) ;
-        include 'views/layout/header.view.php';
-        include 'views/updateProfile.view.php';
-        include 'views/layout/footer.view.php';
-    }
-
-    public function updateProfile(string $firstname, string $lastname, string $nickname, string $email, string $password)
-    {
-        $userModel = new User();
-        //$database = new Database();
-        var_dump($_SESSION['Users']);
-        $userData = $userModel->getByUsername($_SESSION['Users']['ID']);
-
-        if (password_verify($password, $userData['password'])) {
-            // Mot de passe correct, mettre à jour les données
-            $userModel->updateProfile($_SESSION['Users']['ID'], $firstname, $lastname, $nickname, $email);
-
-            // Mettre à jour les données de session
-            $_SESSION['Users']['nickname'] = $nickname;
-            $_SESSION['Users']['email'] = $email;
-
-            // Rediriger vers la page de profil mise à jour
-            http_response_code(302);
-            header('location: /');
-        } else {
-            // Mot de passe incorrect, afficher une erreur
-            
+        try {
+            // Inclusion des vues nécessaires pour le formulaire de connexion
             include 'views/layout/header.view.php';
-            echo "Current password is incorrect. Please try again.";
-            include 'views/updateProfile.view.php';
+            include 'views/login.view.php';
             include 'views/layout/footer.view.php';
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire de connexion");
         }
     }
+
+    /**
+     * Méthode pour déconnecter l'utilisateur
+     */
+    public function logout()
+    {
+        try {
+            // Supprimer les données de session de l'utilisateur
+            unset($_SESSION['Users']);
+            
+            // Redirection vers la page d'accueil
+            http_response_code(302);
+            header('Location: /');
+            exit;
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de la déconnexion : " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Méthode pour afficher le formulaire de mise à jour du profil
+     */
+    public function showUpdateProfileForm()
+    {
+        try {
+            // Instanciation du modèle d'utilisateur
+            $userModel = new User();
+            
+            // Récupération des données utilisateur
+            $userData = $userModel->getByUsername($_SESSION['Users']['nickname']);
+            var_dump($userData);
+
+            // Inclusion des vues pour le formulaire de mise à jour du profil
+            include 'views/layout/header.view.php';
+            include 'views/updateProfile.view.php';
+            include 'views/layout/footer.view.php';
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire de mise à jour du profil");
+        }
+    }
+
+    /**
+     * Méthode pour mettre à jour le profil de l'utilisateur
+     * @param string $firstname Prénom de l'utilisateur
+     * @param string $lastname Nom de l'utilisateur
+     * @param string $nickname Surnom de l'utilisateur
+     * @param string $email Adresse e-mail de l'utilisateur
+     * @param string $password Mot de passe de l'utilisateur
+     */
+    public function updateProfile(string $firstname, string $lastname, string $nickname, string $email, string $password)
+    {
+        try {
+            // Instanciation du modèle d'utilisateur
+            $userModel = new User();
+            
+            // Récupération des données utilisateur
+            $userData = $userModel->getByUsername($_SESSION['Users']['ID']);
+
+            // Vérification du mot de passe
+            if (password_verify($password, $userData['password'])) {
+                // Mot de passe correct, mettre à jour les données du profil
+                $userModel->updateProfile($_SESSION['Users']['ID'], $firstname, $lastname, $nickname, $email);
+
+                // Mettre à jour les données de session
+                $_SESSION['Users']['nickname'] = $nickname;
+                $_SESSION['Users']['email'] = $email;
+
+                // Redirection vers la page de profil mise à jour
+                http_response_code(302);
+                header('Location: /');
+                exit;
+            } else {
+                // Mot de passe incorrect, afficher une erreur
+                
+                include 'views/layout/header.view.php';
+                echo "Le mot de passe actuel est incorrect. Veuillez réessayer.";
+                include 'views/updateProfile.view.php';
+                include 'views/layout/footer.view.php';
+            }
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de la mise à jour du profil : " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Méthode pour afficher la page d'erreur 404
+     */
+    public function showError404()
+    {
+        include 'views/errors/error-404.php';
+    }
+
+    /**
+     * Méthode pour afficher la page d'erreur 500
+     */
+    public function showError500()
+    {
+        include 'views/errors/error-500.php';
+    }
+
+    /**
+     * Méthode de gestion des erreurs
+     * @param \Throwable $e L'exception ou l'erreur rencontrée
+     * @param string $message Le message d'erreur
+     */
+    private function handleError(\Throwable $e, string $message)
+    {
+        // Enregistrement de l'erreur dans les logs
+        error_log($message);
+        // Afficher un message d'erreur à l'utilisateur si nécessaire
+        // Par exemple, vous pourriez rediriger l'utilisateur vers une page d'erreur spécifique.
+        $this->showError500();
+    }
+
+    
 }

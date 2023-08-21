@@ -9,6 +9,8 @@
             </li>
             <li>
                 <p><?= $hike['duration'] ?></p>
+                <p>distance <?= $hike['distance'] ?></p>
+                <p>elevation gain <?= $hike['elevation_gain'] ?></p>
             </li>
         <?php endforeach; ?>
     </ul>

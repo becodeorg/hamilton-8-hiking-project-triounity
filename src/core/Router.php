@@ -79,8 +79,6 @@ class Router
                 break;
 
             default:
-            $pageController = new PageController();
-            $pageController->page_404();
                 break;
         }
     }
