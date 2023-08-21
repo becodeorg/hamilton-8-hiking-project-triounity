@@ -29,6 +29,7 @@
         line-height: 40px;
         padding: 10px;
         border-radius: 60px;
+        position: relative;
     
         .searchInput {
             background: $greenSecondaryColor;
@@ -92,6 +93,10 @@
 
         li {
             margin-right: 20px;
+
+            i{
+                color: $greenPrimaryColor;
+            }
 
             a {
                 color: $whiteTertiaryColor;

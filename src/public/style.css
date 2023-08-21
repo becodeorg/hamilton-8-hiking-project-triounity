@@ -59,6 +59,7 @@ i, em {
   line-height: 40px;
   padding: 10px;
   border-radius: 60px;
+  position: relative;
 }
 .navbar .searchBar .searchInput {
   background: #26773B;
@@ -111,6 +112,9 @@ i, em {
 }
 .navbar .navLinks li {
   margin-right: 20px;
+}
+.navbar .navLinks li i {
+  color: #4CAF50;
 }
 .navbar .navLinks li a {
   color: #FFFFFF;
@@ -456,6 +460,49 @@ i, em {
 }
 .hikesList .cardList .hikeCard:hover .cardFront {
   opacity: 0;
+}
+
+.details-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.details-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4CAF50;
+}
+.details-container p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+.details-container h4 {
+  font-size: 1rem;
+  color: #F69220;
+  margin-bottom: 1rem;
+}
+.details-container .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.details-container .button:hover {
+  background-color: #F69220;
+  color: #FFFFFF;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+.details-container .button:active {
+  transform: scale(0.95);
 }
 
 .footer {

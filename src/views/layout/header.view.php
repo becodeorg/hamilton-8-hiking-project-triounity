@@ -33,7 +33,7 @@
                 <li><a href="/">Contact</a></li>
                 <?php if (!empty($_SESSION['Users'])): ?>
                     Welcome <?= $_SESSION['Users']['nickname'] ?>
-                    <li><a href="/logout"><img src="/assets/img/loggout" /></a></li>
+                    <li><a href="/logout"><img src="./assets/img/loggout.gif" /></a></li>
                 <?php else: ?>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>

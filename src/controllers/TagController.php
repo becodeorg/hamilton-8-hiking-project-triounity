@@ -27,7 +27,7 @@ class TagController extends Tag
     public function show(string $ID)
     {
         try {
-            $tag = (new Tag())->find($ID);
+            $tag = Tag::find($ID);
 
             if (empty($tag)) {
                 (new PageController())->page_404();

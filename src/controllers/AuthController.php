@@ -51,7 +51,7 @@ class AuthController extends Database
 
     public function login(string $nicknameInput, string $passwordInput)
     {
-        if (empty($usernameInput) || empty($passwordInput)) {
+        if (empty($nicknameInput) || empty($passwordInput)) {
             //throw new Exception('Formulaire non complet');
             Error::showError('Formulaire non complet');
         }
@@ -75,7 +75,7 @@ class AuthController extends Database
             Error::showError('Mauvais mot de passe');
         }
 
-        $_SESSION['user'] = [
+        $_SESSION['Users'] = [
             'id' => $user['id'],
             'nickname' => $nickname,
             'email' => $user['email']

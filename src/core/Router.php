@@ -11,7 +11,7 @@ use controllers\PageController;
 
 
 use Exception;
-use models\Hike;
+
 
 class Router
 {
@@ -36,7 +36,7 @@ class Router
 
             case "/tag":
                 if (empty($_GET['ID'])) throw new Exception("Please provide a tag ID"); // Change to 'ID'
-                $tagController = new tagcontroller(); // Change to hikecontroller
+                $tagController = new TagController(); // Change to hikecontroller
                 $tagController->show($_GET['ID']); // Change to hikeController
                 break;
 
