@@ -24,21 +24,21 @@ try {
     switch ($url_path) {
         case "":
         case "/index.php":
-            $tagController = new tagcontroller(); // Change to hikecontroller
-            $tagController->index(); // Change to hikeController
-            $hikeController = new hikecontroller(); // Change to hikecontroller
-            $hikeController->index(); // Change to hikeController
+            $tagController = new tagcontroller();
+            $tagController->index();
+            $hikeController = new hikecontroller();
+            $hikeController->index();
             break;
         case "hike":
-            if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID"); // Change to 'ID'
-            $hikeController = new hikecontroller(); // Change to hikecontroller
-            $hikeController->show($_GET['ID']); // Change to hikeController
+            if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID");
+            $hikeController = new hikecontroller();
+            $hikeController->show($_GET['ID']); 
             break;
         case "tag":
-            if (empty($_GET['ID'])) throw new Exception("Please provide a tag ID"); // Change to 'ID'
-            $tagController = new tagcontroller(); // Change to hikecontroller
-            $tagController->show($_GET['ID']); // Change to hikeController
-            break;
+            if (empty($_GET['ID'])) throw new Exception("Please provide a tag ID");
+    $tagController = new tagcontroller();
+    $tagController->showHikesByCategory($_GET['ID']); // Utilisez showHikesByCategory ici
+    break;
         default:
             $pageController = new PageController();
             $pageController->page_404();

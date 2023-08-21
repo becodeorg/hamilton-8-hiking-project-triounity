@@ -30,20 +30,5 @@ class hike extends Database
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findHikesByCategory(string $tagID)
-    {
-        try {
-            $sql = "SELECT h.* FROM hiking h
-                    INNER JOIN manytomany m ON h.ID = m.hikeID
-                    WHERE m.tagID = ?";
-        
-            $stmt = $this->query($sql, [$tagID]);
-            $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $hikes;
-
-        } catch (Exception $e) {
-            throw new Exception("Erreur lors de la récupération des randonnées par catégorie : " . $e->getMessage());
-        }
-    }
+    
 }

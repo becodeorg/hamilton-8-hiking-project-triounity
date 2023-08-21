@@ -14,7 +14,6 @@ class Router
                 $tagController = new tagcontroller();
                 $tagController->showHikesByCategory($_GET['ID']);
                 break;
-                
             case "/home":
                 echo "It works!";
                 break;

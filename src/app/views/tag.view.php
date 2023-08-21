@@ -1,14 +1,15 @@
-<h2>Randonnées dans cette catégorie</h2>
-<ul>
-    <?php if (!empty($hikes)): ?>
+<h2>List of hikes</h2>
+<?php if (!empty($hikes)): ?>
+    <ul>
         <?php foreach($hikes as $hike): ?>
             <li>
                 <a href="/hike?ID=<?= $hike['ID'] ?>">
                     <?= $hike['name'] ?>
                 </a>
+                <p>durée <?= $hike['duration'] ?></p>
+                <p>distance <?= $hike['distance'] ?></p>
+                <p>dénivelé positif <?= $hike['elevation_gain'] ?></p>
             </li>
         <?php endforeach; ?>
-    <?php else: ?>
-        <p>Aucune randonnée trouvée dans cette catégorie.</p>
-    <?php endif; ?>
-</ul>
+    </ul>
+<?php endif; ?> 

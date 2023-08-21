@@ -38,17 +38,16 @@ class tagcontroller extends tag
     }
 
     public function showHikesByCategory(string $tagID)
-    {
-        try {
-            $hikes = $this->findHikesByCategory($tagID);
-    
-            include 'app/views/tag.view.php';
-    
-        } catch (Exception $e) {
-            (new PageController())->page_500($e->getMessage());
-        }
-    }
-    
+{
+    try {
+        $hikes = $this->findHikesByCategory($tagID);
 
+        // Chargez la vue appropriée pour afficher les randonnées de la catégorie
+        include 'app/views/tag.view.php';
+
+    } catch (Exception $e) {
+        (new PageController())->page_500($e->getMessage());
+    }
+}
 
 }
