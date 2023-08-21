@@ -1,8 +1,5 @@
-
-
-
 <body>
-<form method="post" action="#">
+<form method="post" action="#" style="align-self: center">
     <fieldset>
         <label for="name">Titre de votre randonéee</label>
         <input type="text" name="name" id="name" placeholder="Nom..." required>
@@ -29,9 +26,8 @@
 <?php
 if (isset($error)):
     if ($error === '404') :?>
-<p class="error">La page recherchée n'a pas été trouvée</p>
-<?php elseif ($error === '500'):?>
-<p class="error">Il semblerait que l'on ai rencontré une erreur. Veuillez réessayer d'ici quelques minutes.</p>
-<?php endif;
+        <p class="error">La page recherchée n'a pas été trouvée</p>
+    <?php elseif ($error === '500'):?>
+        <p class="error">Il semblerait que l'on ai rencontré une erreur. Veuillez réessayer d'ici quelques minutes.</p>
+    <?php endif;
 endif; ?>
-
