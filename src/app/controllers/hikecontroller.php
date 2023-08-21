@@ -14,7 +14,6 @@ class hikecontroller extends hike
         try {
             $hikes = hike::findAll(20);
 
-            // 3 - Affichage de la liste des produits
             include 'app/views/index.view.php';
         } catch (Exception $e) {
             print_r($e->getMessage());
@@ -31,7 +30,6 @@ class hikecontroller extends hike
                 die;
             }
 
-            // 3 - Afficher la page
             include 'app/views/layout/header.view.php';
             include 'app/views/hike.view.php';
             include 'app/views/layout/footer.view.php';
@@ -40,4 +38,8 @@ class hikecontroller extends hike
             (new PageController())->page_500($e->getMessage());
         }
     }
+
+
+
+
 }

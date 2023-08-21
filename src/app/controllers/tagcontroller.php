@@ -14,7 +14,6 @@ class tagcontroller extends tag
         try {
             $tags = tag::findAll(20);
 
-            // 3 - Affichage de la liste des produits
             include 'app/views/index.view.php';
         } catch (Exception $e) {
             print_r($e->getMessage());
@@ -31,13 +30,25 @@ class tagcontroller extends tag
                 die;
             }
 
-            // 3 - Afficher la page
-            include 'app/views/layout/header.view.php';
             include 'app/views/tag.view.php';
-            include 'app/views/layout/footer.view.php';
 
         } catch (Exception $e) {
             (new PageController())->page_500($e->getMessage());
         }
     }
+
+    public function showHikesByCategory(string $tagID)
+    {
+        try {
+            $hikes = $this->findHikesByCategory($tagID);
+    
+            include 'app/views/tag.view.php';
+    
+        } catch (Exception $e) {
+            (new PageController())->page_500($e->getMessage());
+        }
+    }
+    
+
+
 }
