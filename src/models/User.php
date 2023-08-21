@@ -30,4 +30,11 @@ class User extends Database
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function updateProfile($userId, $firstname, $lastname, $nickname, $email)
+    {
+        Database::query(
+            "UPDATE Users SET firstname = ?, lastname = ?, nickname = ?, email = ? WHERE id = ?",
+            [$firstname, $lastname, $nickname, $email, $userId]
+        );
+    }
 }

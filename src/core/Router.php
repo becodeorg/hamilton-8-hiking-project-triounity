@@ -58,6 +58,26 @@ class Router
                 if ($method === "POST") $authController->register($_POST['firstname'], $_POST['lastname'], $_POST['nickname'], $_POST['email'], $_POST['password']);
                 break;
 
+            case "/update-profile":
+                $authController = new AuthController();
+
+                if ($method === "GET") {
+                    // Afficher le formulaire de mise à jour du profil
+                    $authController->showUpdateProfileForm();
+                }
+
+                if ($method === "POST") {
+                    // Traiter le formulaire de mise à jour du profil
+                    $authController->updateProfile(
+                        $_POST['firstname'],
+                        $_POST['lastname'],
+                        $_POST['nickname'],
+                        $_POST['email'],
+                        $_POST['password'] // Champ pour le mot de passe actuel
+                    );
+                }
+                break;
+
             default:
             $pageController = new PageController();
             $pageController->page_404();

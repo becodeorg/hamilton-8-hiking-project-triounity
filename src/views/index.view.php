@@ -1,15 +1,15 @@
 
 <?php if (!empty($tags)): ?>
     <section class="tagBubbles">
-    <ul class="tagList">
-        <?php foreach($tags as $tag): ?>
-            <li>
-                <a href="/tag?ID=<?= $tag['ID'] ?>">
-                    <?= $tag['name'] ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+        <ul class="tagList">
+            <?php foreach($tags as $tag): ?>
+                <li>
+                    <a href="/tag?ID=<?= $tag['ID'] ?>">
+                        <?= $tag['name'] ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </section>
 <?php endif; ?>
 

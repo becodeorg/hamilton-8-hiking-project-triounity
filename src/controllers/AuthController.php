@@ -7,6 +7,7 @@ namespace controllers;
 //use Exception;
 use models\Database;
 use core\Error;
+use models\User;
 
 class AuthController extends Database
 {
@@ -98,5 +99,41 @@ class AuthController extends Database
         unset($_SESSION['Users']);
         http_response_code(302);
         header('location: /');
+    }
+
+    public function showUpdateProfileForm()
+    {
+        $userModel = new User();
+        $userData = $userModel->getByUsername($_SESSION['Users']['id']);
+
+        include 'views/layout/header.view.php';
+        include 'views/update_profile.view.php';
+        include 'views/layout/footer.view.php';
+    }
+
+    public function updateProfile(string $firstname, string $lastname, string $nickname, string $email, string $password)
+    {
+        $userModel = new User();
+        $userData = $userModel->getByUsername($_SESSION['Users']['id']);
+
+        if (password_verify($password, $userData['password'])) {
+            // Mot de passe correct, mettre à jour les données
+            $userModel->updateProfile($_SESSION['Users']['id'], $firstname, $lastname, $nickname, $email);
+
+            // Mettre à jour les données de session
+            $_SESSION['Users']['nickname'] = $nickname;
+            $_SESSION['Users']['email'] = $email;
+
+            // Rediriger vers la page de profil mise à jour
+            http_response_code(302);
+            header('location: /');
+        } else {
+            // Mot de passe incorrect, afficher une erreur
+            
+            include 'views/layout/header.view.php';
+            echo "Current password is incorrect. Please try again.";
+            include 'views/updateProfile.view.php';
+            include 'views/layout/footer.view.php';
+        }
     }
 }
