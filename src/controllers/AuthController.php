@@ -9,7 +9,7 @@ use models\Database;
 use Exception;
 use models\User;
 use PHPMailer\PHPMailer\PHPMailer;
-//use PHPMailer\PHPMailer\Exception;
+
 //use PHPMailer\PHPMailer\SMTP;
 
 class AuthController extends Database
@@ -51,7 +51,7 @@ class AuthController extends Database
             $mail->CharSet = 'UTF-8'; // Choix de l'encodage
             $mail->SetLanguage('fr'); // Langue des erreurs
 
-            $mail ->SMTPDebug = 2;
+            $mail ->SMTPDebug = 0;
             $mail->isSMTP();
 
             $mail->Host = getenv('EMAIL_HOST'); // Adresse du serveur SMTP
@@ -64,34 +64,30 @@ class AuthController extends Database
             $mail->Port = 465; // Port SMTP ou 587 pour 'tls'
 
             $mail->setFrom(getenv('EMAIL_USERNAME'), 'randomarre'); // Adresse et nom de l'émetteur
-            $mail->addAddress($email, 'NATHANLOMBARDELLI@HOTMAIL.COM', 'zychsteeve4@gmail.com'); // Adresse et nom du destinataire
+            $mail->addAddress($email, $nickname); // Adresse et nom du destinataire
 
+            $emailContent = file_get_contents('../email/confirmation_email.html');
             $mail->isHTML(true);
-
             $mail->Subject = 'Confirmation Email'; // Sujet de l'e-mail
-            $mail->Body = // Corps de l'e-mail
-            '<html>
-                <body>
-                    <h1>Bienvenue chez RandoMarre</h1>
-                </body>
-            </html>'; 
+            $mail->Body = $emailContent; // Corps de l'e-mail 
             $mail->AltBody = 'This is the plain text version of the email.'; // Version texte brut de l'e-mail
-
+            
             // Envoyer l'e-mail
             $mail->send();
             
             // Rediriger l'utilisateur vers une page de succès
             // ou afficher un message de succès
             // ...
-        } catch (\PHPMailer\PHPMailer\Exception $e) {
+            http_response_code(302);
+            header('location: /');
+    
+        } catch (Exception $e) {
             // Gérer les erreurs d'envoi d'e-mail
             error_log("Erreur d'envoi d'e-mail : " . $e->getMessage());
         }
 
         // Rediriger l'utilisateur vers une page de succès ou
         // afficher un message de succès pour l'inscription
-        http_response_code(302);
-        header('location: /');
     }
 
     public function showRegistrationForm()
