@@ -1,8 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Models;
+namespace app\models;
 
 use PDO;
 use PDOStatement;

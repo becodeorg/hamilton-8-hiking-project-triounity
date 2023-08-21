@@ -14,10 +14,10 @@ class Router
         switch ($uri_path) {
             case "/":
             case "/index":
-            case "/hikes": // Assurez-vous d'utiliser /hikes au lieu de "hikes"
-                if (empty($_GET['hikeCode'])) throw new Exception("Please select a hike"); // Correction: Utilisez 'hikeCode' au lieu de 'hikesCode'
-                $hikeController = new HikeController(); // Assurez-vous que HikeController est correctement importé
-                $hikeController->show($_GET['hikeCode']);
+            case "tag":
+                if (empty($_GET['ID'])) throw new Exception("Please provide a tag ID");
+                $tagController = new tagcontroller();
+                $tagController->showHikesByCategory($_GET['ID']);
                 break;
             case "/home":
                 echo "It works!";
