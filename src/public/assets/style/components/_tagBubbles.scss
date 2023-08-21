@@ -1,0 +1,44 @@
+.tagBubbles {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: $whiteTertiaryColor;
+    border: 1px solid $borderPrimaryColor;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .tagList {
+        list-style: none;
+        padding: auto;
+        margin: 0;
+        text-align: center;
+      
+        li {
+          display: inline-block;
+          margin: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          background-color: $greenPrimaryColor;
+          color: $whiteTertiaryColor;
+          border-radius: 2rem;
+          transition: background-color 0.3s ease;
+      
+            &:hover {
+                background-color: $hoverDarkColorOne;
+            }
+      
+            a {
+                text-decoration: none;
+                color: inherit;
+
+                &:hover {
+                    color: $orangePrimaryColor;
+                }
+            }
+        }
+    }
+}
+  
+  
+  
+  

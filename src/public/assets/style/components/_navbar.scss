@@ -1,0 +1,183 @@
+
+// Apply styles to the navigation bar
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $greenPrimaryColor;
+    padding: 20px;
+    color: $whiteTertiaryColor;
+
+    .navLogo {
+
+        img {
+            vertical-align: middle;
+        }
+
+        a {
+            color: $whiteTertiaryColor;
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 10px;
+            scale: 1.1;
+        }
+    }
+
+    .searchBar {
+        height: 60px;
+        background: $greenSecondaryColor;
+        line-height: 40px;
+        padding: 10px;
+        border-radius: 60px;
+        position: relative;
+    
+        .searchInput {
+            background: $greenSecondaryColor;
+            color: $whiteTertiaryColor;
+            outline: none;
+            border: none;
+            line-height: 40px;
+            width: 0px;
+            float: left;
+            font-size: 14px;
+            transition: 0.7s ease;
+            font-family: sans-serif;
+            
+            &::placeholder {
+                color: $whiteTertiaryColor;
+            }
+
+            &:focus {
+                width: 240px;
+                margin: 0px 8px;
+            }
+        }
+    
+        .searchBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            background: $greenTeriaryColor;
+            padding: 12px;
+            border-radius: 50%;
+            float: right;
+            color: $whitePrimaryColor;
+            transition: 0.4s ease;
+    
+            &:hover {
+                background: $whiteTertiaryColor;
+            }
+    
+            + .searchInput:focus & {
+                background: $whiteTertiaryColor;
+            }
+        }
+    
+        &:hover {
+            .searchInput {
+                width: 240px;
+                margin: 0px 8px;
+            }
+    
+            .searchBtn {
+                background: $greenSecondaryColor;
+            }
+        }
+    }
+    
+    .navLinks {
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        li {
+            margin-right: 20px;
+
+            i{
+                color: $greenPrimaryColor;
+            }
+
+            a {
+                color: $whiteTertiaryColor;
+                text-decoration: none;
+                transition: color 0.3s, transform 0.3s;
+
+                &:hover {
+                    color: $orangeSecondaryColor;
+                    transform: translateY(-3px);
+                }
+            }
+        }
+    }
+
+    .menuIcon {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 30px;
+        height: 130px;
+
+        .bar {
+            width: 100%;
+            height: 4px;
+            border-radius: 200px;
+            background-color: $whiteTertiaryColor;
+            margin: 3px 0;
+            transition: transform 0.4s;
+        }
+
+        &.active {
+            .bar:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+
+            .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .bar:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .navLinks {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem;
+            position: absolute;
+            top: 170px;
+            left: 0;
+            background-color: $greenSecondaryColor;
+            text-align: center;
+            z-index: 1;
+            transform: translateY(-100%);
+            transition: 0.4s;
+
+            &.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+        }
+
+        .menuIcon {
+            display: flex;
+        }
+    }
+}
+
+
+   
+
+
