@@ -4,10 +4,10 @@
 namespace core;
 
 
-use controllers\TagController;
-use controllers\HikeController;
-use controllers\AuthController;
-use controllers\PageController;
+use app\controllers\TagController;
+use app\controllers\HikeController;
+use app\controllers\AuthController;
+use app\controllers\PageController;
 
 
 use Exception;
@@ -77,3 +77,6 @@ class Router
                     );
                 }
                 break;
+        }
+    }
+}

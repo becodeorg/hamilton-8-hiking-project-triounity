@@ -7,9 +7,9 @@ class Error
 {
     public static function showError(string $message): void
     {
-        include 'views/layout/header.view.php';
+        include 'app/views/layout/header.view.php';
         echo "<div class='error-message'>$message</div>";
-        include 'views/layout/footer.view.php';
+        include 'app/views/layout/footer.view.php';
         exit;
     }
 }
