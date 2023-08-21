@@ -15,6 +15,8 @@ class hikecontroller extends hike
             $hikes = hike::findAll(20);
 
             include 'app/views/index.view.php';
+            include 'app/views/layout/footer.view.php';
+
         } catch (Exception $e) {
             print_r($e->getMessage());
         }

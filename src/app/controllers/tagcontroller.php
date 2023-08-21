@@ -14,7 +14,9 @@ class tagcontroller extends tag
         try {
             $tags = tag::findAll(20);
 
+            include 'app/views/layout/header.view.php';
             include 'app/views/index.view.php';
+
         } catch (Exception $e) {
             print_r($e->getMessage());
         }
@@ -30,7 +32,10 @@ class tagcontroller extends tag
                 die;
             }
 
+            include 'app/views/layout/header.view.php';
             include 'app/views/tag.view.php';
+            include 'app/views/layout/footer.view.php';
+
 
         } catch (Exception $e) {
             (new PageController())->page_500($e->getMessage());
@@ -43,7 +48,10 @@ class tagcontroller extends tag
         $hikes = $this->findHikesByCategory($tagID);
 
         // Chargez la vue appropriée pour afficher les randonnées de la catégorie
+        include 'app/views/layout/header.view.php';
         include 'app/views/tag.view.php';
+        include 'app/views/layout/footer.view.php';
+
 
     } catch (Exception $e) {
         (new PageController())->page_500($e->getMessage());

@@ -4,8 +4,8 @@
 namespace core;
 
 
-use app\controllers\TagController;
-use app\controllers\HikeController;
+use app\controllers\tagcontroller;
+use app\controllers\hikecontroller;
 use app\controllers\AuthController;
 use app\controllers\PageController;
 
@@ -22,15 +22,15 @@ class Router
         switch ($uri_path) {
             case "/":
             case "/index":
-                $tagController = new TagController(); // Change to hikecontroller
-                $tagController->tagIndex(); // Change to hikeController
-                $hikeController = new HikeController(); // Change to hikecontroller
-                $hikeController->hikeIndex(); // Change to hikeController
+                $tagController = new tagcontroller(); // Change to hikecontroller
+                $tagController->Index(); // Change to hikeController
+                $hikeController = new hikecontroller(); // Change to hikecontroller
+                $hikeController->Index(); // Change to hikeController
                 break;
 
             case "/hike":
                 if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID"); // Change to 'ID'
-                $hikeController = new HikeController(); // Change to hikecontroller
+                $hikeController = new hikecontroller(); // Change to hikecontroller
                 $hikeController->show($_GET['ID']); // Change to hikeController
                 break;
 
