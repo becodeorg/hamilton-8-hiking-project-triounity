@@ -1,87 +1,65 @@
 <?php
-
 namespace models;
 
 use PDO;
 use PDOStatement;
 
+
 class Database
 {
     private PDO $pdo;
+
     public function __construct()
     {
         $this->pdo = new PDO(
             "mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'),
             getenv('DB_USERNAME'),
             getenv('DB_PASSWORD')
-
         );
+
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-    public function query(string $request,array $params = []):PDOStatement{
 
-        $stmnt =  $this ->pdo->prepare($request);
+    public function query(string $sql, array $param = []): PDOStatement
+    {
+        $stmt = $this->pdo->prepare($sql);
 
+        // boucle sur mes params
+        foreach ($param as $key => $value) {
 
-        $stmnt->execute($params);
-        return $stmnt;
+            if (gettype($value) == "integer") {
+                $stmt->bindParam($key, $value, PDO::PARAM_INT);
+            } else if (gettype($value) == "boolean") {
+                $stmt->bindParam($key, $value, PDO::PARAM_BOOL);
+            } else {
+                $stmt->bindValue($key, $value);
+            }
+        }
+
+        $stmt->execute();
+        return $stmt;
     }
-    public function lastInsertId(){
+
+    public function exec(string $sql, array $param = []): bool
+    {
+        $stmt = $this->pdo->prepare($sql);
+
+        foreach ($param as $key => $value) {
+            if (gettype($value) == "integer") {
+                $stmt->bindParam($key, $value, PDO::PARAM_INT);
+            } else if (gettype($value) == "boolean") {
+                $stmt->bindParam($key, $value, PDO::PARAM_BOOL);
+            } else {
+                $stmt->bindValue($key, $value);
+            }
+        }
+        return $stmt->execute();
+    }
+
+    public function lastInsertId(): string|int
+    {
         return $this->pdo->lastInsertId();
     }
 
 }
-
-
-
-
-
-
-//
-//
-//namespace Models;
-//
-//use PDO;
-//use PDOStatement;
-//
-//class Database
-//{
-//    private PDO $pdo;
-//
-//    public function __construct() // le construct est le constructor de notre db, ils sont liés
-//        //c une fct qui est générée dès qu'on va  initialiser notre objet db et ca va permettre d'init notre $PDO,
-//        //de créer dans notre propriété PDO de notre classe une connexsion a notre db grace a pdo.
-//    {
-//        $this->pdo = new PDO(
-//            'mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_DATABASE'),
-//            getenv('DB_USERNAME'),
-//            getenv('DB_PASSWORD')
-//        );
-//
-//        $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-//        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//    }
-//// les fct query permettent de faire des requetes select qu'on va faire,
-////faut mettre un sql de type string a l'int et un array $apram, param de la requete sql
-//
-///**
-// * @param array $param tableau des param
-// * @param string $sql  requête sql
-// * @return PDOStatement
-// */
-//    public function query(string $sql, array $param = []): PDOStatement
-//    {
-//        // prepare la requête
-//        $stmt = $this->pdo->prepare($sql);
-//        $stmt->execute($param);
-//        return $stmt;
-//    }
-//
-//    public function lastInsertId()
-//    {
-//        return $this->pdo->lastInsertId();
-//    }
-//}
-//
-//// extend db et new db c la même chose

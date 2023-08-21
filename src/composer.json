@@ -1,6 +1,6 @@
 {
   "autoload": {
-    "classmap": [ // pour le routeur, c une règle pour définir que pour l'autoload, tout tt les chemins de notre projets sont accessibles
+    "classmap": [
       "./"
     ]
   },
@@ -8,5 +8,3 @@
     "ext-pdo": "*"
   }
 }
-
-// but de l'autoload: charger des fichiers

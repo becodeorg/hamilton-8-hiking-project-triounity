@@ -15,7 +15,7 @@
 
 <?php if (!empty($hikes)): ?>
     <section class="hikesList">
-        <h2>List of hikes</h2>
+        <h2>List of our hikes</h2>
         <ul class="cardList">
             <?php foreach($hikes as $hike): ?>
                 <li class="hikeCard">
@@ -26,14 +26,25 @@
                             </h3>
                         </div>
                         <div class="cardBack">
-                            <p>durée <?= $hike['duration'] ?></p>
-                            <p>distance <?= $hike['distance'] ?></p>
-                            <p>dénivelé positif <?= $hike['elevation_gain'] ?></p>
-                            <a href="/hike?ID=<?= $hike['ID'] ?>">More infos</a>
+                            <p>duration <?= $hike['duration'] ?></p>
+                            <p>length <?= $hike['distance'] ?></p>
+                            <p>positive altitude <?= $hike['elevation_gain'] ?></p>
+                            <a href="/hike?ID=<?= $hike['ID'] ?>">Plus d'infos</a>
+                            <a href="/modify?ID=<? $modification['ID'] ?> $">
+                                <button>Modify this hike</button>
+                            </a>
+                            <a href="/delete?ID=<? $delete['ID'] ?> $">
+                                <button>Delete this hike</button>
+                            </a>
                         </div>
                     </div>
                 </li>
             <?php endforeach; ?>
         </ul>
+    </section>
+    <section>
+        <a href="/creation?ID=<? $creation['ID'] ?> $">
+            <button>Create a new hike</button>
+        </a>
     </section>
 <?php endif; ?>
