@@ -20,14 +20,11 @@ class User extends Database
         return true;
     }
 
-    public function getByUsername(string $userId): array|bool
+    public function getByUsername(string $nickname): array|bool
     {
-        $stmt = Database::query(
-            "SELECT * FROM Users WHERE nickname = ?",
-            [$userId]
-        );
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM Users WHERE nickname = :nickname";
+        $result = Database::query($sql, ["nickname" => $nickname]);
+        return $result->fetch();
     }
 
     public function updateProfile($userId, $firstname, $lastname, $nickname, $email)
@@ -35,7 +32,6 @@ class User extends Database
         Database::query(
             "UPDATE Users SET firstname = ?, lastname = ?, nickname = ?, email = ? WHERE ID = ?",
             [$firstname, $lastname, $nickname, $email, $userId]
-        );
-        
+        );    
     }
 }

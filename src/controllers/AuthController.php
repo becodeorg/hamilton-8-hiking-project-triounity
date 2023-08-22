@@ -169,10 +169,9 @@ class AuthController extends Database
         try {
             // Instanciation du modèle d'utilisateur
             $userModel = new User();
-            
+
             // Récupération des données utilisateur
             $userData = $userModel->getByUsername($_SESSION['Users']['nickname']);
-            var_dump($userData);
 
             // Inclusion des vues pour le formulaire de mise à jour du profil
             include 'views/layout/header.view.php';
@@ -182,6 +181,7 @@ class AuthController extends Database
             ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire de mise à jour du profil");
         }
     }
+
 
     /**
      * Méthode pour mettre à jour le profil de l'utilisateur
@@ -211,13 +211,14 @@ class AuthController extends Database
 
                 // Redirection vers la page de profil mise à jour
                 http_response_code(302);
-                header('Location: /');
+                header('Location: /profile');
                 exit;
             } else {
                 // Mot de passe incorrect, afficher une erreur
-                
+                $error = "Le mot de passe actuel est incorrect. Veuillez réessayer.";
+
+                // Inclusion des vues pour le formulaire de mise à jour du profil avec l'erreur
                 include 'views/layout/header.view.php';
-                echo "Le mot de passe actuel est incorrect. Veuillez réessayer.";
                 include 'views/components/updateProfile.view.php';
                 include 'views/layout/footer.view.php';
             }
@@ -225,6 +226,25 @@ class AuthController extends Database
             ErrorHandler::handleError($e, "Erreur lors de la mise à jour du profil : " . $e->getMessage());
         }
     }
+
+    public function showProfile()
+    {
+        try {
+            // Instanciation du modèle d'utilisateur
+            $userModel = new User();
+
+            // Récupération des données utilisateur
+            $userData = $userModel->getByUsername($_SESSION['Users']['nickname']);
+
+            // Inclusion de la vue du profil
+            include 'views/layout/header.view.php';
+            include 'views/components/profile.view.php';
+            include 'views/layout/footer.view.php';
+        } catch (\Exception $e) {
+            ErrorHandler::handleError($e, "Erreur lors de l'affichage du profil");
+        }
+    }
+
 
     /**
      * Méthode pour afficher la page d'erreur 404

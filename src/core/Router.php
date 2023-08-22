@@ -57,6 +57,11 @@ class Router
                 if ($method === "GET") $authController->showRegistrationForm();
                 if ($method === "POST") $authController->register($_POST['firstname'], $_POST['lastname'], $_POST['nickname'], $_POST['email'], $_POST['password']);
                 break;
+            
+            case "/profile":
+                $authController = new AuthController();
+                $authController->showProfile();
+                break;
 
             case "/update-profile":
                 $authController = new AuthController();
