@@ -113,8 +113,6 @@ i, em {
 }
 .navbar .navLinks li {
   margin-right: 20px;
-  display: flex;
-  flex-direction: column;
 }
 .navbar .navLinks li i {
   color: #26773B;
@@ -342,6 +340,25 @@ i, em {
 }
 .pageContainerLogin .containerAuth .authRight .formAuth button:hover, .pageContainerRegister .containerAuth .authRight .formAuth button:hover {
   background-color: #357a38;
+}
+
+.profile-container {
+  height: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+.profile-container h1 {
+  margin-top: 0;
+}
+.profile-container p {
+  margin: 5px 0;
+}
+.profile-container a {
+  color: #007bff;
+  text-decoration: none;
 }
 
 /* Style for the Update Profile form */
