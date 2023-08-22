@@ -98,9 +98,9 @@ class Router
                     } else if ($_GET['value'] == "hike") {
                         $hikeController = new HikeController();
                         if (empty($_POST)) {
-                            $hikeController->showUpdateHikeForm($_GET['hid']);
+                            $hikeController->showUpdateHikeForm($_GET['ID']);
                         } else {
-                            $hikeController->updateHikeVerification($_POST, $_GET['hid']);
+                            $hikeController->updateHikeVerification($_POST, $_GET['ID']);
                         }
                     }
                 }
