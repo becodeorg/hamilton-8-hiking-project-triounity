@@ -114,7 +114,8 @@ i, em {
   margin-right: 20px;
 }
 .navbar .navLinks li i {
-  color: #4CAF50;
+  color: #26773B;
+  font-size: 1.5rem;
 }
 .navbar .navLinks li a {
   color: #FFFFFF;
