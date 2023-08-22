@@ -92,10 +92,9 @@ class Router
                 case "/delete-hike":
                     if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID");
                     $hikeController = new HikeController();
-                    if ($method === "GET") $hikeController->deleteHike($_GET['ID']);
+                    if ($method === "POST") $hikeController->deleteHike($_GET['ID']);
                     break;
     
-
             default:
                 break;
         }

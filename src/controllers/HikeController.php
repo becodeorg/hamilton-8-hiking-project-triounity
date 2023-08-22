@@ -52,7 +52,7 @@ class HikeController extends Hike
 
     }
 
-    public function createHike()
+public function createHike()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newHikeData = [
@@ -120,18 +120,13 @@ class HikeController extends Hike
             echo "Randonnée introuvable.";
             return;
         }
-
-        // Afficher la confirmation de suppression de randonnée
-        include 'views/layout/header.view.php';
-        include 'views/components/delete_hike.view.php';
-        include 'views/layout/footer.view.php';
+    
     }
-
     
 
 
 /* À corriger, réviser */
-    private function handleError(Exception $e, string $message)
+    public function handleError(Exception $e, string $message)
     {
         error_log($message);
         // Gérer l'affichage des erreurs, par exemple rediriger vers une page d'erreur

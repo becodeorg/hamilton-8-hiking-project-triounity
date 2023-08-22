@@ -198,12 +198,12 @@ class AuthController extends Database
             $userModel = new User();
             
             // Récupération des données utilisateur
-            $userData = $userModel->getByUsername($_SESSION['Users']['ID']);
+            $userData = $userModel->getByUsername($_SESSION['Users']['nickname']);
 
             // Vérification du mot de passe
             if (password_verify($password, $userData['password'])) {
                 // Mot de passe correct, mettre à jour les données du profil
-                $userModel->updateProfile($_SESSION['Users']['ID'], $firstname, $lastname, $nickname, $email);
+                $userModel->updateProfile($_SESSION['Users']['nickname'], $firstname, $lastname, $nickname, $email);
 
                 // Mettre à jour les données de session
                 $_SESSION['Users']['nickname'] = $nickname;
@@ -231,7 +231,7 @@ class AuthController extends Database
      */
     public function showError404()
     {
-        include 'views/pages/errors/error-404.php';
+        include 'views/pages/error-404.view.php';
     }
 
     /**
@@ -239,7 +239,7 @@ class AuthController extends Database
      */
     public function showError500()
     {
-        include 'views/pages/errors/error-500.php';
+        include_once 'views/pages/error-500.view.php';
     }
 
     /**
@@ -254,7 +254,5 @@ class AuthController extends Database
         // Afficher un message d'erreur à l'utilisateur si nécessaire
         // Par exemple, vous pourriez rediriger l'utilisateur vers une page d'erreur spécifique.
         $this->showError500();
-    }
-
-    
+    }    
 }

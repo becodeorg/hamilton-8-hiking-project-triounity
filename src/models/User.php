@@ -20,7 +20,7 @@ class User extends Database
         return true;
     }
 
-    public function getByUsername(string $userId): array|false
+    public function getByUsername(string $userId): array|bool
     {
         $stmt = Database::query(
             "SELECT * FROM Users WHERE nickname = ?",

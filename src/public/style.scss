@@ -11,14 +11,26 @@
 
 //components
 
-//@import './assets/style/components/';
+
 
 @import './assets/style/components/navbar';
-@import './assets/style/components/form';
-@import './assets/style/components/tagBubbles';
-@import './assets/style/components/hikes';
-@import './assets/style/components/onlyHike.scss';
+
+        //Login - Register
+@import './assets/style/components/loginRegister';
 @import './assets/style/components/updateProfile';
+
+        //Tag
+@import './assets/style/components/tagBubbles';
+
+        //Hike
+@import './assets/style/components/hikes';
+@import './assets/style/components/onlyHike';
+
+@import './assets/style/components/create_hike';
+@import './assets/style/components/update_hike';
+@import './assets/style/components/delete_hike';
+
+
 
 //Layout
 
