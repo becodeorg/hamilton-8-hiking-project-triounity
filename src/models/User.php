@@ -37,4 +37,6 @@ class User extends Database
             [$firstname, $lastname, $nickname, $email, $userId]
         );
     }
+
+
 }
