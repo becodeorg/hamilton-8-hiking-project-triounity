@@ -24,6 +24,7 @@ return array(
     'controllers\\ErrorHandler' => $baseDir . '/controllers/ErrorController.php',
     'controllers\\FormValidationException' => $baseDir . '/controllers/ErrorController.php',
     'controllers\\HikeController' => $baseDir . '/controllers/HikeController.php',
+    'controllers\\NotFoundException' => $baseDir . '/controllers/ErrorController.php',
     'controllers\\TagController' => $baseDir . '/controllers/TagController.php',
     'core\\Router' => $baseDir . '/core/Router.php',
     'models\\Database' => $baseDir . '/models/Database.php',

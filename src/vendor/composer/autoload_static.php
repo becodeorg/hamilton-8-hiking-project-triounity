@@ -39,6 +39,7 @@ class ComposerStaticInit791e62f6e9f02ffc60428ad5fe03576c
         'controllers\\ErrorHandler' => __DIR__ . '/../..' . '/controllers/ErrorController.php',
         'controllers\\FormValidationException' => __DIR__ . '/../..' . '/controllers/ErrorController.php',
         'controllers\\HikeController' => __DIR__ . '/../..' . '/controllers/HikeController.php',
+        'controllers\\NotFoundException' => __DIR__ . '/../..' . '/controllers/ErrorController.php',
         'controllers\\TagController' => __DIR__ . '/../..' . '/controllers/TagController.php',
         'core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'models\\Database' => __DIR__ . '/../..' . '/models/Database.php',

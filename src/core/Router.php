@@ -7,7 +7,7 @@ namespace core;
 use controllers\TagController;
 use controllers\HikeController;
 use controllers\AuthController;
-use controllers\PageController;
+//use controllers\PageController;
 
 
 use Exception;
@@ -77,6 +77,24 @@ class Router
                     );
                 }
                 break;
+            
+                case "/create-hike":
+                    $hikeController = new HikeController();
+                    if ($method === "GET") $hikeController->createHike();
+                    break;
+    
+                case "/update-hike":
+                    if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID");
+                    $hikeController = new HikeController();
+                    if ($method === "GET") $hikeController->updateHike($_GET['ID']);
+                    break;
+    
+                case "/delete-hike":
+                    if (empty($_GET['ID'])) throw new Exception("Please provide a hike ID");
+                    $hikeController = new HikeController();
+                    if ($method === "GET") $hikeController->deleteHike($_GET['ID']);
+                    break;
+    
 
             default:
                 break;

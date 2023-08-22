@@ -36,7 +36,7 @@ class TagController extends Tag
 
             // 3 - Afficher la page
             include 'views/layout/header.view.php';
-            include 'views/tag.view.php';
+            include 'views/components/tag.view.php';
             include 'views/layout/footer.view.php';
 
         } catch (Exception $e) {

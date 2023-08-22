@@ -30,4 +30,45 @@ class Hike extends Database
         );
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function create(array $data): bool
+    {
+        $stmt = $this->query(
+            "INSERT INTO hiking (name, description, distance, duration) VALUES (?, ?, ?, ?)",
+            [
+                $data['name'],
+                $data['description'],
+                $data['distance'],
+                $data['duration']
+            ]
+        );
+
+        return $stmt !== false;
+    }
+    
+    public function update(string $ID, array $data): bool
+    {
+        $stmt = $this->query(
+            "UPDATE hiking SET name = ?, description = ?, distance = ?, duration = ? WHERE ID = ?",
+            [
+                $data['name'],
+                $data['description'],
+                $data['distance'],
+                $data['duration'],
+                $ID
+            ]
+        );
+
+        return $stmt !== false;
+    }
+
+    public function delete(string $ID): bool
+    {
+        $stmt = $this->query(
+            "DELETE FROM hiking WHERE ID = ?",
+            [$ID]
+        );
+
+        return $stmt !== false;
+    }
 }

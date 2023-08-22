@@ -66,7 +66,7 @@ class AuthController extends Database
         try {
             // Inclusion des vues nécessaires pour le formulaire d'inscription
             include 'views/layout/header.view.php';
-            include 'views/register.view.php';
+            include 'views/components/register.view.php';
             include 'views/layout/footer.view.php';
 
         } catch (\Exception $e) {
@@ -136,7 +136,7 @@ class AuthController extends Database
         try {
             // Inclusion des vues nécessaires pour le formulaire de connexion
             include 'views/layout/header.view.php';
-            include 'views/login.view.php';
+            include 'views/components/login.view.php';
             include 'views/layout/footer.view.php';
         } catch (\Exception $e) {
             ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire de connexion");
@@ -176,7 +176,7 @@ class AuthController extends Database
 
             // Inclusion des vues pour le formulaire de mise à jour du profil
             include 'views/layout/header.view.php';
-            include 'views/updateProfile.view.php';
+            include 'views/components/updateProfile.view.php';
             include 'views/layout/footer.view.php';
         } catch (\Exception $e) {
             ErrorHandler::handleError($e, "Erreur lors de l'affichage du formulaire de mise à jour du profil");
@@ -218,7 +218,7 @@ class AuthController extends Database
                 
                 include 'views/layout/header.view.php';
                 echo "Le mot de passe actuel est incorrect. Veuillez réessayer.";
-                include 'views/updateProfile.view.php';
+                include 'views/components/updateProfile.view.php';
                 include 'views/layout/footer.view.php';
             }
         } catch (\Exception $e) {
@@ -231,7 +231,7 @@ class AuthController extends Database
      */
     public function showError404()
     {
-        include 'views/errors/error-404.php';
+        include 'views/pages/errors/error-404.php';
     }
 
     /**
@@ -239,7 +239,7 @@ class AuthController extends Database
      */
     public function showError500()
     {
-        include 'views/errors/error-500.php';
+        include 'views/pages/errors/error-500.php';
     }
 
     /**
