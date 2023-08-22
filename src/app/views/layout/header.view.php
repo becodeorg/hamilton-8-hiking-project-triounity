@@ -30,9 +30,9 @@
             <ul class="navLinks" id="navLinks">
                 <li><a href="/">Home</a></li>
                 <li><a href="/">Hikes</a></li>
-                <li><a href="/">Contact</a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user"></i>
                 <?php if (!empty($_SESSION['Users'])): ?>
-                    Welcome <?= $_SESSION['Users']['nickname'] ?>
+                    Welcome <?= $_SESSION['Users']['nickname'] ?></a></li>
                     <li><a href="/logout"><img src="./assets/img/loggout.gif" /></a></li>
                 <?php else: ?>
                     <li><a href="/login">Login</a></li>

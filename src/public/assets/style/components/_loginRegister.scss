@@ -1,0 +1,183 @@
+.pageContainerLogin, .pageContainerRegister {
+    margin: 0 10%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  
+    @media screen and (max-width: 768px) {
+        margin: 0 5%;
+    }
+  
+    .containerAuth {
+        width: 100%;
+        display: flex;
+        background-color: #ffffff;
+        border-radius: 1rem; 
+        overflow: hidden;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        animation: slide-in 1s ease-in-out;
+    
+        @keyframes slide-in {
+            from {
+                transform: translateY(6.25rem);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+  
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            padding: 1rem;
+        }
+  
+        .authLeft {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            background-color: $greenPrimaryColor;
+            color: $whitePrimaryColor;
+            animation: fade-in 1s ease-in-out;
+    
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+    
+            h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+  
+            p {
+                font-size: 1.25rem;
+                text-align: center;
+            }
+  
+            .toggle-page {
+                width: 100%;
+                padding: 1rem;
+                background-color: $whitePrimaryColor;
+                color: $greenPrimaryColor;
+                border: none;
+                border-radius: 2rem;
+                font-size: 1.125rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+    
+                &:hover {
+                    background-color: $hoverDarkColorOne;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                gap: 1rem;
+            }
+        }
+  
+        .authRight {
+            width: 100%;
+            flex: 1;
+            padding: 2rem;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            background-color: $whiteTertiaryColor;
+    
+                h2 {
+                    font-size: 2rem; 
+                }
+        
+                p {
+                    font-size: 1rem; 
+                    color: #c6c4c4;
+                    margin-bottom: 1.25rem; 
+                }
+        
+                .linksAuth {
+                    display: flex;
+                    gap: 2rem; 
+                    margin-bottom: 1.25rem; 
+    
+                .btnLinks {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%; 
+                    height: 100%;
+                    padding: 2rem;
+                    border-radius: 200px;
+                    color: $blackPrimaryColor;
+                    transition: background-color 0.3s;
+                    border: 1px solid rgb(229, 237, 202) ;
+                    
+        
+                    &:hover {
+                        background-color: rgba(94, 233, 0, 0.272);
+                    }
+                }
+            }
+    
+            .formAuth {
+
+                label {
+                    display: block;
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+        
+                input {
+                    width: 100%;
+                    padding: 1rem;
+                    margin-bottom: 1.25rem;
+                    border: 1px solid $whiteSecondaryColor;
+                    border-radius: 0.3125rem; 
+                    font-size: 1rem; 
+                    transition: background-color 0.3s, box-shadow 0.3s;
+                    
+                    
+        
+                    &:focus {
+                        background-color: $whitePrimaryColor;
+                        box-shadow: 0 0 0 0.1875rem rgba(76, 175, 79, 0.666); 
+                    }
+                }
+
+                input::placeholder{
+                        color: #e3e1e1;
+                    }
+    
+                button {
+                    width: 100%;
+                    padding: 1rem;
+                    background-color: $greenPrimaryColor;
+                    color: $whitePrimaryColor;
+                    border: none;
+                    border-radius: 2.5rem; 
+                    font-size: 1.125rem;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+        
+                    &:hover {
+                        background-color: $hoverDarkColorOne;
+                    }
+                }
+            }
+        }
+    }
+}
+  

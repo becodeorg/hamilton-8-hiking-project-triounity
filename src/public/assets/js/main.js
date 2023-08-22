@@ -11,30 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/*
-// Obtenir la liste des tags
-const tagList = document.querySelector('.tagList');
+function openConfirmDialog() {
+  document.getElementById("deleteConfirmDialog").style.display = "flex";
+}
 
-// Dupliquer les tags pour créer un effet de défilement en cercle
-const clonedTags = tagList.innerHTML;
-tagList.innerHTML += clonedTags;*/
+function confirmDelete() {
+  document.getElementById("delete-hike-form").submit();
+}
 
-
-// Selectors
-
-/*document.addEventListener('DOMContentLoaded', function () {
-  // Selectors
-  const toggleLinks = document.querySelectorAll('.toggle-page');
-  const pageContainer = document.querySelector('.pageContainer');
-  // Loop through all toggle links
-  toggleLinks.forEach(link => {
-    // Add a "click" event listener to each link
-    link.addEventListener('click', function (event) {
-      event.preventDefault(); // Prevent the default link behavior
-      
-      // Toggle the "show-register" class on the "page-container" div
-      pageContainer.classList.toggle('show-register');
-    });
-  });
-});*/
+function cancelDelete() {
+  document.getElementById("deleteConfirmDialog").style.display = "none";
+}
 

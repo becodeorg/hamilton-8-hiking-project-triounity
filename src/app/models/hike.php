@@ -1,11 +1,12 @@
 <?php
-declare(strict_types=1);
+
 
 namespace app\models;
 
+
 use PDO;
 
-class hike extends Database
+class Hike extends Database
 {
     public function findAll(int $limit = 0): array
     {
@@ -15,9 +16,9 @@ class hike extends Database
             $sql = "SELECT * FROM hiking LIMIT " . $limit;
         }
         $stmt = $this->query($sql);
-        $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC); // Change to $hikes
     
-        return $hikes;
+        return $hikes; // Change to $hikes
     }
     
 
@@ -30,5 +31,44 @@ class hike extends Database
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function create(array $data): bool
+    {
+        $stmt = $this->query(
+            "INSERT INTO hiking (name, description, distance, duration) VALUES (?, ?, ?, ?)",
+            [
+                $data['name'],
+                $data['description'],
+                $data['distance'],
+                $data['duration']
+            ]
+        );
+
+        return $stmt !== false;
+    }
     
+    public function update(string $ID, array $data): bool
+    {
+        $stmt = $this->query(
+            "UPDATE hiking SET name = ?, description = ?, distance = ?, duration = ? WHERE ID = ?",
+            [
+                $data['name'],
+                $data['description'],
+                $data['distance'],
+                $data['duration'],
+                $ID
+            ]
+        );
+
+        return $stmt !== false;
+    }
+
+    public function delete(string $ID): bool
+    {
+        $stmt = $this->query(
+            "DELETE FROM hiking WHERE ID = ?",
+            [$ID]
+        );
+
+        return $stmt !== false;
+    }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
 body {
   width: 100vw;
@@ -114,7 +115,8 @@ i, em {
   margin-right: 20px;
 }
 .navbar .navLinks li i {
-  color: #4CAF50;
+  color: #26773B;
+  font-size: 1.5rem;
 }
 .navbar .navLinks li a {
   color: #FFFFFF;
@@ -180,7 +182,7 @@ i, em {
   }
 }
 
-.pageContainer {
+.pageContainerLogin, .pageContainerRegister {
   margin: 0 10%;
   display: flex;
   justify-content: center;
@@ -188,11 +190,11 @@ i, em {
   min-height: 100vh;
 }
 @media screen and (max-width: 768px) {
-  .pageContainer {
+  .pageContainerLogin, .pageContainerRegister {
     margin: 0 5%;
   }
 }
-.pageContainer .containerAuth {
+.pageContainerLogin .containerAuth, .pageContainerRegister .containerAuth {
   width: 100%;
   display: flex;
   background-color: #ffffff;
@@ -212,12 +214,12 @@ i, em {
   }
 }
 @media screen and (max-width: 768px) {
-  .pageContainer .containerAuth {
+  .pageContainerLogin .containerAuth, .pageContainerRegister .containerAuth {
     flex-direction: column;
     padding: 1rem;
   }
 }
-.pageContainer .containerAuth .authLeft {
+.pageContainerLogin .containerAuth .authLeft, .pageContainerRegister .containerAuth .authLeft {
   flex: 1;
   padding: 2rem;
   display: flex;
@@ -237,15 +239,15 @@ i, em {
     opacity: 1;
   }
 }
-.pageContainer .containerAuth .authLeft h2 {
+.pageContainerLogin .containerAuth .authLeft h2, .pageContainerRegister .containerAuth .authLeft h2 {
   font-size: 2rem;
   text-align: center;
 }
-.pageContainer .containerAuth .authLeft p {
+.pageContainerLogin .containerAuth .authLeft p, .pageContainerRegister .containerAuth .authLeft p {
   font-size: 1.25rem;
   text-align: center;
 }
-.pageContainer .containerAuth .authLeft .toggle-page {
+.pageContainerLogin .containerAuth .authLeft .toggle-page, .pageContainerRegister .containerAuth .authLeft .toggle-page {
   width: 100%;
   padding: 1rem;
   background-color: rgb(250, 244, 224);
@@ -256,15 +258,15 @@ i, em {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.pageContainer .containerAuth .authLeft .toggle-page:hover {
+.pageContainerLogin .containerAuth .authLeft .toggle-page:hover, .pageContainerRegister .containerAuth .authLeft .toggle-page:hover {
   background-color: #357a38;
 }
 @media screen and (max-width: 768px) {
-  .pageContainer .containerAuth .authLeft {
+  .pageContainerLogin .containerAuth .authLeft, .pageContainerRegister .containerAuth .authLeft {
     gap: 1rem;
   }
 }
-.pageContainer .containerAuth .authRight {
+.pageContainerLogin .containerAuth .authRight, .pageContainerRegister .containerAuth .authRight {
   width: 100%;
   flex: 1;
   padding: 2rem;
@@ -276,20 +278,20 @@ i, em {
   text-align: center;
   background-color: #FFFFFF;
 }
-.pageContainer .containerAuth .authRight h2 {
+.pageContainerLogin .containerAuth .authRight h2, .pageContainerRegister .containerAuth .authRight h2 {
   font-size: 2rem;
 }
-.pageContainer .containerAuth .authRight p {
+.pageContainerLogin .containerAuth .authRight p, .pageContainerRegister .containerAuth .authRight p {
   font-size: 1rem;
   color: #c6c4c4;
   margin-bottom: 1.25rem;
 }
-.pageContainer .containerAuth .authRight .linksAuth {
+.pageContainerLogin .containerAuth .authRight .linksAuth, .pageContainerRegister .containerAuth .authRight .linksAuth {
   display: flex;
   gap: 2rem;
   margin-bottom: 1.25rem;
 }
-.pageContainer .containerAuth .authRight .linksAuth .btnLinks {
+.pageContainerLogin .containerAuth .authRight .linksAuth .btnLinks, .pageContainerRegister .containerAuth .authRight .linksAuth .btnLinks {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,15 +303,15 @@ i, em {
   transition: background-color 0.3s;
   border: 1px solid rgb(229, 237, 202);
 }
-.pageContainer .containerAuth .authRight .linksAuth .btnLinks:hover {
+.pageContainerLogin .containerAuth .authRight .linksAuth .btnLinks:hover, .pageContainerRegister .containerAuth .authRight .linksAuth .btnLinks:hover {
   background-color: rgba(94, 233, 0, 0.272);
 }
-.pageContainer .containerAuth .authRight .formAuth label {
+.pageContainerLogin .containerAuth .authRight .formAuth label, .pageContainerRegister .containerAuth .authRight .formAuth label {
   display: block;
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
-.pageContainer .containerAuth .authRight .formAuth input {
+.pageContainerLogin .containerAuth .authRight .formAuth input, .pageContainerRegister .containerAuth .authRight .formAuth input {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1.25rem;
@@ -318,14 +320,14 @@ i, em {
   font-size: 1rem;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-.pageContainer .containerAuth .authRight .formAuth input:focus {
+.pageContainerLogin .containerAuth .authRight .formAuth input:focus, .pageContainerRegister .containerAuth .authRight .formAuth input:focus {
   background-color: rgb(250, 244, 224);
   box-shadow: 0 0 0 0.1875rem rgba(76, 175, 79, 0.666);
 }
-.pageContainer .containerAuth .authRight .formAuth input::placeholder {
+.pageContainerLogin .containerAuth .authRight .formAuth input::placeholder, .pageContainerRegister .containerAuth .authRight .formAuth input::placeholder {
   color: #e3e1e1;
 }
-.pageContainer .containerAuth .authRight .formAuth button {
+.pageContainerLogin .containerAuth .authRight .formAuth button, .pageContainerRegister .containerAuth .authRight .formAuth button {
   width: 100%;
   padding: 1rem;
   background-color: #4CAF50;
@@ -336,8 +338,76 @@ i, em {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.pageContainer .containerAuth .authRight .formAuth button:hover {
+.pageContainerLogin .containerAuth .authRight .formAuth button:hover, .pageContainerRegister .containerAuth .authRight .formAuth button:hover {
   background-color: #357a38;
+}
+
+.profile-container {
+  height: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+.profile-container h1 {
+  margin-top: 0;
+}
+.profile-container p {
+  margin: 5px 0;
+}
+.profile-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Style for the Update Profile form */
+.pageContainerUpdateProfile {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pageContainerUpdateProfile form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ff9900;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.pageContainerUpdateProfile form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4CAF50;
+}
+.pageContainerUpdateProfile form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #26773B;
+}
+.pageContainerUpdateProfile form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  color: #000000;
+}
+.pageContainerUpdateProfile form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.pageContainerUpdateProfile form button:hover {
+  background-color: #0056b3;
 }
 
 .tagBubbles {
@@ -503,6 +573,191 @@ i, em {
 }
 .details-container .button:active {
   transform: scale(0.95);
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-container input[type=text], .form-container input[type=number], .form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.form-container input[type=time] {
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.form-container input[type=time]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+.form-container input[type=time]::-webkit-inner-spin-button, .form-container input[type=time]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-container input[type=time]::-webkit-datetime-edit-fields-wrapper {
+  border-color: #007bff;
+}
+.form-container button[type=submit] {
+  background-color: #4CAF50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.form-container button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* styles.scss */
+.update-hike-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.update-hike-form .label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.update-hike-form .input-field {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.update-hike-form .time-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.update-hike-form .time-input-container .time-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+}
+.update-hike-form .time-input-container .time-input-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #777;
+}
+.update-hike-form .time-input-container .time-input-labels .hour-label, .update-hike-form .time-input-container .time-input-labels .minute-label {
+  display: block;
+}
+.update-hike-form .submit-button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.update-hike-form .submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Style pour le formulaire de suppression */
+.delete-hike-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0.2rem 1rem rgba(0, 0, 0, 0.2);
+  text-align: left;
+  max-width: 28rem;
+  margin: 2rem auto;
+  margin-top: 5rem;
+  /* Style pour le bouton de suppression */
+}
+.delete-hike-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.delete-hike-container .delete-button {
+  padding: 0.625rem 1.25rem;
+  background-color: #FF4136;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.delete-hike-container .delete-button:hover {
+  background-color: #D32F2F;
+}
+
+/* Style pour la boîte de dialogue de confirmation */
+.confirm-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.confirm-dialog .confirm-dialog-box {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 28rem;
+  text-align: center;
+  box-shadow: 0px 0.2rem 1rem rgba(0, 0, 0, 0.2);
+  /* Style pour les boutons de confirmation */
+}
+.confirm-dialog .confirm-dialog-box .confirm-dialog-message {
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+}
+.confirm-dialog .confirm-dialog-box .confirm-dialog-buttons {
+  display: flex;
+  justify-content: center;
+}
+.confirm-dialog .confirm-dialog-box .confirm-dialog-buttons .confirm-dialog-button {
+  padding: 0.625rem 1.25rem;
+  margin: 0 0.625rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.confirm-dialog .confirm-dialog-box .confirm-dialog-buttons .confirm-dialog-button.confirm {
+  background-color: #4CAF50;
+  color: white;
+}
+.confirm-dialog .confirm-dialog-box .confirm-dialog-buttons .confirm-dialog-button.cancel {
+  background-color: #ccc;
+  color: black;
 }
 
 .footer {
